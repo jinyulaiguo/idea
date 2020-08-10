@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- saved from url=(0158)https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title> Server-controlled Streaming Java API Reference for Linux: io.agora.streaming.StreamingEventHandler接口 参考 </title><link rel="shortcut icon" href="https://agora-web-cdn.oss-cn-beijing.aliyuncs.com/dpv3/favicon.ico"><link rel="apple-touch-icon" href="https://docs-preview.agoralab.co/apple-touch-icon.png"><meta name="google" value="notranslate"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,user-scalable=0"><script async="" src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/gtm.js.下载"></script><script async="" src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/analytics.js.下载"></script><script src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/hm.js.下载"></script><script>var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?71179bbad7c652f8289d970d29f36014";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-76402370-1', 'auto', {
+    'allowLinker': true
+  });
+  ga('require', 'linker');
+  ga('linker:autoLink', ['www.agora.io', 'console.agora.io', 'dashboard.agora.io']);
+  ga('send', 'pageview');</script><script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);w['gtag'] = function() {
+          w[l].push(arguments)
+        };
+  })(window, document, 'script', 'dataLayer', 'GTM-TKTWGML');</script><link rel="stylesheet" href="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/docsearch.min.css"><script type="text/javascript" src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/docsearch.min.js.下载"></script><link href="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/1.74b13ede69b54aa437d8.css" rel="stylesheet"><link href="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/docsgen.36690ad619d011289910.css" rel="stylesheet"><style id="tsbrowser_video_independent_player_style" type="text/css">
+      [tsbrowser_force_max_size] {
+        width: 100% !important;
+        height: 100% !important;
+        left: 0px !important;
+        top: 0px !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        transform: none !important;
+      }
+      [tsbrowser_force_fixed] {
+        position: fixed !important;
+        z-index: 9999 !important;
+        background: black !important;
+      }
+      [tsbrowser_force_hidden] {
+        opacity: 0 !important;
+        z-index: 0 !important;
+      }
+      [tsbrowser_hide_scrollbar] {
+        overflow: hidden !important;
+      }
+      [tsbrowser_display_none] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+      [tsbrowser_force_show] {
+        display: black !important;
+        visibility: visible !important;
+        opacity: 0;
+      }</style></head><body><!--[if lt IE 10]>
+  <p class="browsehappy">您正在使用 <strong>旧浏览器</strong> . 为了更好的体验，请 <a href="http://browsehappy.com/">更新</a> 您的浏览器.</p>
+<![endif]--><nav class="navbar navbar-default" id="navbar"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-toggle sidebar-toggle" href="javascript:;"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a><a class="navbar-brand" href="https://docs-preview.agoralab.co/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAMAAADwSaEZAAACAVBMVEUAAAD///9///9Vqv9Av/8zzP8qqv8ktv8gn/8as/8Xov8Vqv8SpP8Qn/8Ppf8Oqv8Nof8Mov8Ln/8Ko/8Jof8Snv8Qpf8Qn/8Pov8Pnf8PoP8Oo/8Nof8No/8Nn/8Mnv8MoP8Mov8Ln/8Lof8Lnf8Ln/8Kov8Jof8Nof8Nnv8NoP8Nnf8MoP8Mn/8Lnf8Ln/8LoP8Knf8Kn/8KoP8Knv8Kn/8KoP8Kn/8Jnf8Jnv8Jn/8Mnf8Mnv8Ln/8LoP8Lnv8Lnf8Lnv8Kn/8Kn/8Knf8Knv8Kn/8Knv8Knf8Jn/8Jnv8Ln/8Lnf8Lnv8Ln/8Lnv8Lnv8Kn/8Knv8Knf8Kn/8Knv0Kn/0Knv0Knf0Knv0Jn/0Jnf0Jnv0Ln/0Lnv0Knf0Kn/0Knf0Knv0Knv0Knf0Knv0Jnv0Jnf0Jnv0Jnv0Jnv0Knv4Knf4Knv4Knf4Knv4Knf4Knv4Knf4Knv4Knv4Knf4Knv4Knv4Knv4Jnf4Jnv4Jnf4Jnv4Jnv4Jnv4Jnv4Jnf4Knf4Knv4Knf4Knf4Knv4Knv4Knf4Knv4Knv4Knf4Jnf4Jnv4Jnv4Jnv4Jnv4Jnv4Jnv4Knf4Knf4Knv4Knf4Knv4Knv4Knf4Knf4Knv4Knv4Knf4Knv4Jnf4Jnf4Jnv4Jnf4Jnv4Jnv4Jnv4Jnf4Jnf4Jnv4Jnf4Jnv4Jnf2YbaeiAAAAqnRSTlMAAQIDBAUGBwgKCwwOEBESExYYGRsdHyAhIiMkJicoKissLS4vMDQ2OTo7PD5AREVGSUpLTE1OUFFUVVZXWltcXmFiZWZnaGlrbXFyc3R1dnl6fH1/gYKDhYaHiouPkJKUl5iZmqCjpKWmqKusra+wsbK0tba3uLq7vL2+v8LDxcbJyszOz9DR0tTW2Nrc3d/h4uPm5+jp6uvt7u/w8fLz9PX29/n6+/z9/pdzH7wAAAKgSURBVFjD7djpV1JBGMDh98o1RExoIaLVFqLNyiXLFrPSstwqbLPFsszQSisrjbJSIlITIUtLMVsQmr+yL3ma4d4789KZ05d4P8rvPIdzz51FADKTmcz8mzFvqjh3w3ff1+I9XrJQ+7HqafDl4STXqb7v5M8kA1fKFtCfL7o4RQixIyS1sp9oZ7xp8XygNH4jBIWZqsNEf37ccgEAgK3n9x+E2JYgMZ6v9SaA3AGCw5QLPwl3Bt3qQ4LDrF1ENHNPCQ5zhkhaw8M8k0Qa5vhApGGWAJGGKZ1EHtZE5GEbE5o01nFo8zKzbd2us8H0MOVlajhcTq3s5a1zaWAHUrLpapUNVj9CY8obthpZo03OY7FSNurP14sOJnHYPaYZNXgWdSjMHqeTmQKj16cNgx1hkkbDRZI3gcDa6SKSY7x8TyCw93RRxdlXsqNCbAmz+dl4O95VIVZIB37uVlwoxKpwjx8AwDQrwk7TwX7+iTMswprpYBsf84uwFjpYxcc6RNglOvDwsccizEsHe/hYSIQx73UNH/skworooJNrbRC+Zy46+GLmYV4hljVDF7t52GvxQn9AF684Vili16hlkn3Gi+ktAlvJJOF8I6wWdQa8YJpeVd/amUBhR9nouqIXFUzhTqeccba6m6ttimPYE70+JQuuT/0X40wSfT2wjKV0yTYHfZxXhNO4a0jFYK+mjPfWOBUAAMuOa9E0L3t39Op4ZGBo+i9ujtaQxGsoOCclYrA9LhGDw0mJGJTEJGKw9p1YmMBiYPMLqNgx+wgWA7Vhlmd1LQVwfcRiAI72hBE1Wg4AAO4xNAaw4qbut+sry5p/GN14DMBa2cN6icHLzLW56DkeA4DsrSdbnw1FPkcDT243F2t/DnHXdUfRWGb+4/kFZM0/2fkeWwoAAAAASUVORK5CYII=" alt=""> <span>开发者中心</span></a></div><div class="navbar-collapse collapse mobile" id="navbar-collapse" aria-expanded="false"><ul class="nav navbar-nav navbar-right login-nav"><li class="without-login"><a href="https://console.agora.io/cn/signup">注册/登录</a></li><li class="with-login hidden dropdown"><a href="javascript:;" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="username"></span> <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="https://console.agora.io/">我的主页</a></li><li><a href="https://console.agora.io/signout">退出</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right main-nav" style="width: 476.25px; max-width: 100%;"><li><a href="https://docs-preview.agoralab.co/cn/faq">FAQ</a></li><li><a href="https://docs.agora.io/cn/Agora%20Platform/community" target="_blank">开发者社区</a></li><li><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/downloads">下载</a></li><li><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/sampleapps">场景方案 Demo</a></li><li><a href="https://agora-ticket.agora.io/">支持</a></li><li class="dropdown language-switch"><a href="javascript:;" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="language" class="mr-1">中文</span><span class="caret"></span></a><ul class="dropdown-menu"><li class="" value="en"><a href="javascript:;">English</a></li><li class="active" value="cn"><a href="javascript:;">中文</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li class="search-nav search-btn"><form action="https://docs-preview.agoralab.co/cn/search" class="search-form"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="form-control search-box ds-hint" autocomplete="off" readonly="" aria-hidden="true" spellcheck="false" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(255, 255, 255, 0.15);"><input type="text" name="q" class="form-control search-box ds-input" placeholder="搜索关键词" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Helvetica Neue&quot;, Arial, &quot;pingfang SC&quot;, &quot;Microsoft YaHei&quot;; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span> <input type="hidden" name="platform" value=""> <input type="hidden" name="product" value=""> <img class="icon search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAFPFKMkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAARKADAAQAAAABAAAARAAAAADjEeGFAAAE1klEQVR4Ae2bX4hVVRTGvVb4YI4kgUzFUIFYRGkPFtbAjEHiQIQP9tofRISQIH0XeleQ3pTCp3qIQqIefFOKxplxxhR8UQmjmhwVKS3IMr3+vjt7X/bd99xz9rnnnPFeZy9Y7H/f+tY63zlzz99ZsqQSqxvrSK51u0j3EdtvaV1Qy4I/APiw5vIENNP7ZD0xZkue1NbIMgsC81YqCMDtNoClpp3EV7YB3AkAA3J37r7ss5ESfs7fOOayd4QNSgOnrdn4RtsJyPxMCzBkQNB7IpQJT6P9KSu+T0UippBCIqYKBaS+Zy/myqNgP4CpM/ioP584BvgYPpK0yHwbeRJOR+Vs4gKTrF3vtLbUW5j2xu4w/HDvVHaneWXxK9HcfgL+VsdaGoHFJLYE/qNg7KAA891AcRMZzWSpRGmJ4lpUoIcU4LgfxL/CZ/FL+BF8aEFKJNHbuLW2n04WnreLtB9VUpRNEEoO/qZiQvFBOPi0C3KTKgb7MyhJCAiyOTGGYF0MIb92E+dytPQhe1qE2NqWhYzBfEj9QAYs3zKkLxviqaxIcLsM9lAWtut1EoyZJLbRn+55OzDtYW+cfovTdTWBgRRjL7ltXeHXIoE5csH8gnIFR3BUICoQFYgKLFoFOH/swKfxf037wYKKQdJv8TT7rvKCyH7LVDCelIy1r22FSeulzJHgqknyUhohmCGD+y8N19UaxMOG/J0QArDrDX53CD4YA+kdEQcHAAT+R96YTH4RYrmuxsG/0Yiq12uZCUIBhnA4FG9xJm6dHYe0SY/A/Lj//YnA8apAXAMWUshYHkLUWGPwp/LEpWKNxHkP1h8Ul0qcdxG+baaYV0NiwT5o8N+H4HNhINY5RZa5z+dhJavhVmsT0CY+hGF+1MGoO+HGl9qHXPe61m7TOYXfsBOmHXfGlRazikTNE5xJeoG2eR6ivzDFhMhMMSdMkWqqU6bfi/k0ZAMqwzi76XhlSSJxVCAqEBWICkQFogJRgahAVCAqUEQBLtv1BPA43ngARxtiJwG9WSRv0djyHrRRCRszQvMl/qhX2EXG3+B6UHwJv4rr0+cn8BfwrfhzuGs3GWyv1Wqfu5N90ZcQuH06Trfx9dq73RRP7Gv4ZZE4trMbrnsSQ9Huuwp9xrehjELgWY3/glv7mc6yMrgr46BA/UZYS3xvUjQ55PtsAtpreON/BIrylh5PYXqNZu2n0hM4hCT5xCai/cxZ6p0uhc04Rab/a0PBssmzwsmlrv+jXTBDCeEUZR+Gq8BnSqBMpSDHOSUytiUVXGAx5AVNJ/qzzoJ/ynSWincRQZcHTzlMvzv93uhS5Id2d9GerrIqL9eZKnMV4qbQHx1RvihE1iEY/tedHOrqQq53jQInnIJ/oz9YVrVwfexw6xbglbK4K+Wh0O1O4erqFdaz3SQl7gH8AO6bhL+336Dm3SAK3oPrJaNrugzXnt6EP+RzMqdvTN7Hj+Eh1pfCLGfL9uJ/hWyhh5lirJtE3Szqo2D3BakLlTADvsBFx6Xe7aYVQ/E6Oh43rt8Z3c1ewy9yRztH29HMhh8FsDEBNMncZjhuJKzd31MSBnffYjNsWiVHTF8oigRRmKQ9lSLMlST8opkzwuiOWGc0PZKw33ctGg3ihkYFogJRgahAVKAPFbgLDV5BK/9/r44AAAAASUVORK5CYII=" alt="search"> <img class="icon close hidden" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAAECElEQVRoBe1bu24TQRT1A4GERIUEQkoBFV+ARIMEVCjQAyJUSLFT0PIVFEgUsR0h4SAUHl9AjeAb0hFXUFBbFHbMuau9y/VkXnc9G1OMJWtm5957zpw7j91ZJ61Wss/u7u6CwRaLRYfrSyU5OY3kSUaJtBQtI51OSxFrunB2LqFhTdJiaeVYOWPMdHhH34VCICaQy7dqN5miAMygCq2sRIGYQfnakYHBYDCjr81cjvmRzVa12QCiAhlBAvgC2xxglgSASdNF+2RnZ+eqaafrM7ZGaqPAdrtNm+qGy8e6y5bTcNLv9wu7K4knQG0aZQ5OBHCDLZBtUQDsnMucgXAGMN3+RE9qAcf7N+IPRfNS1bmW2YuIy6U5xwpzLl/yJ0L4z8tY5x5A9iBxCdLydUBDyHjRxBwgO9Dr9c7GKuR4LtXEFCgV0u7ImxyDxpQqYkkI8GIMZQZCc0B2KIrYRihBqK7tgJc4hnDVDpjxxTWtQ3yPrMZAI2UAsW8CbtmcM5AzkDOQOAN7e3uX60KOx+OLvljrMz0FYMvbnM1mv0aj0SMfgM2G2HfT6fT3cDi8YrNTm5MYtgvkMJ/PDzTkRIqbyxbFHh8fn6PS9vHenQDyECAfKLDb7T7e3t4u6jYgapOkuLyGc9cRtds+XmIKiCXXkBJukDiGXEsaTewjr0OqIraRY/Lc54kEu3dMKV5+olItA+SYi3YVKcX5lpPA/VfFk+RHXH3llk6n89w3e9nPLNXENKYAucVASPdrzTrnOBWxOZHwMF/satpNhsijx9gk5fTKMY/ZZFhxFLGLlEEkOWWhnAdstpZB4hApo2rJvcSxpHXIncRaUi25c1ZjrF6UYKrNgcaXZzvOz5+4Q7nMGcgZyBnIGcgZyBnIGVhnBpxPW6FO4WlsEz6fcXh5Fjqqh7Bi7fQCGy82xihvgPcOHqp+xsayn1rw/v7+JbxR+QHS8xVIu02/9TzFE94Bt6UshdDipYrA/oKjzD1xHayqBTMinRhQf4/O0A/bxQePs3NkfivViHuETkB4m89tJX1UUVswozchvAmh3N+VBTNQCuFNCuV+JhPMgHWEn4ZQ7l9ywQwcI/w0hXK/GhPMBC7hsH+H4OoVWek/QVlrM2K+UNm4YO6ATTjbUDYulLmcb1vYIUVJUxc4D1BWtzCJi9vZBl4D3pRtTdUbHeHAGn0Joa9kElLfx21Ja0RwQOjSGrVN9SaFJxWsEWpm/7SEJxG8itBY4fB7EvO23cQzr1cSnFKo2THXiK8qvJbgJoU2LVwtmH7lx/HwGzp2XXRugvrSZiRsSaqOER9hmvc0BGrBDE5/YYCRfotvr84xjXG0ZSn8Lg7/fezm1f+iaHGyf85AzkDOQM7A/5iBvxzpPw6SSAzWAAAAAElFTkSuQmCC" alt="close"></form></li></ul></div></div></nav><div class="container main-container"><div class="sidebar"><div class="product-select dropdown"><a href="javascript:;" type="button" class="dropdown-toggle dropdown-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="title">服务端推流</span><span class="caret"></span></a><div class="dropdown-menu"><ul>      <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Voice">语音通话</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Video">视频通话</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast">视频互动直播</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Audio%20Broadcast">音频互动直播</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Interactive%20Gaming">互动游戏</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/RTSA">实时码流加速</a></li>          <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/cloud-recording">云端录制</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Recording">本地服务端录制</a></li>  <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Real-time-Messaging">实时消息</a></li>          <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform">Agora 平台</a></li>      </ul></div></div>  <div class="docs-tree">  <ul><li class=" level1 "><a href="https://docs-preview.agoralab.co/cn/scrs/scrs_product?platform=Linux"><span>产品概述</span>  </a>  </li></ul>  <ul><li class=" level1 "><a href="javascript:;"><span>快速开始</span>  <span class="caret"></span>  </a>  <ul>  <li class=" level2 "><a href="https://docs-preview.agoralab.co/cn/scrs/scrs_demo_java?platform=Linux%20Java" class="preventDefault" target="" data-toggle="popover" title="一分钟跑通 Demo"><span>一分钟跑通 Demo</span>  </a>  </li>  <li class=" level2 "><a href="https://docs-preview.agoralab.co/cn/scrs/scrs_sdk_java?platform=Linux%20Java" class="preventDefault" target="" data-toggle="popover" title="下载并快速集成 SDK"><span>下载并快速集成 SDK</span>  </a>  </li>  <li class=" level2 "><a href="https://docs-preview.agoralab.co/cn/scrs/scrs_api_java?platform=Linux%20Java" class="preventDefault" target="" data-toggle="popover" title="调用 API 进行推流"><span>调用 API 进行推流</span>  </a>  </li>  </ul>  </li></ul>  <ul><li class=" level1 "><a href="javascript:;"><span>API 参考</span>  <span class="caret"></span>  </a>  <ul>  <li class=" level2 "><a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/index.html?transId=0.4.0" class="preventDefault" target="" data-toggle="popover" title="Linux Java"><span>Linux Java</span>  </a>  </li>  <li class=" level2 "><a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_cpp/0.4.0/index.html?transId=0.4.0" class="preventDefault" target="" data-toggle="popover" title="Linux CPP"><span>Linux CPP</span>  </a>  </li>  <li class=" level2 "><a href="https://docs-preview.agoralab.co/cn/scrs/scrs_rest?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="服务端推流 RESTful API"><span>服务端推流 RESTful API</span>  </a>  </li>  </ul>  </li></ul>  <div class="hr"></div><ul><li class="level1"><a href="javascript:;"><span>相关链接</span><span class="caret"></span></a><ul><li class="level2"><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/console_overview"><span>控制台</span></a></li><li class="level2"><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/aa_guide"><span>水晶球</span></a></li><li class="level2"><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/dashboard_restful_communication"><span>Restful API (New)</span></a></li></ul></li></ul></div>  </div><div class="docs-container"><div class="breadcrumb"><img class="home" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAFNQDtUAAAABGdBTUEAALGPC/xhBQAAAqFJREFUWAntVjtPG0EQxmcIkilQGoihyE+gsUiRiMYRHUoqi5pIthPZPQWFFSlKk8I0fil0aVAkKhRFoaAAQWWlIhRpoqQwAiEhiii2hC/fXG5W473bu8NxCIVPutvZeXwzuzM7eyMjQU82m7VZbhEBxo47OgKHSYxGoxGj8ZpPsVgcz+VyH8lslD7tdvsXjfQo8D/Tfr8qLjh6a9v2MwnEcStfULgvFSStlGKx2BEEB671AdFScYA0pUCmgaDVinQBZBOI6acKVA+EhMQzKrCBrnDMG8UKTrbcCa39m6Bd8iaGeJgTbNGHVCrVbjabX0y6aj+lAgwfYb4neUQj95f1en3Sw5cMlFoLlXRP8kx0PB5fqFarjiNPJIiCDtxjkzHx9dTouQuyNcrCQJyC0D0b0YaCaDuQz+cfonYOw7Q9dcIGqJcN0Cs8TyQSd8vl8gXP5egLAoATKE1LRaIty1qq1WrbOr8HhNq57OC6Ms1xfjZxfpalTIHQ+rvd7r4UBtBnKMAplisQZmAp6vZinhyxpDUs6VUPT076pcPOTiTcfw9Cp5dePN2gkAYSibwv2JnnzkTLJJ7jEPQPVhyOwx2IvAOePhDVEo33BaquDP0xtsHZeJNOp1czmcwV86KO1woEnW8Wzrfwzgc5QEBf8cfwpFKpHAfpSVmkQNAtn8NoHa9avQQx0W73WENPf23SYb4xkEKhMNPpdLag+ICV/2ZEUJ+xk0/R3r774XgCKZVKVqvVWsSdcIcMcAm9BMCcn3FUHoJ4B7z3Ll4nmUx+gp+eXusJRAdHWkJ/AHUbfe530Xl0dMb/mg/kthlE8H43ViRc5P0UtbOMY+rkGrU0gTn9OoWm289B34HA6TlOwK4ERZMD2+4rkFuTGrmgIX2rduA3OrTTJvcMVJ8AAAAASUVORK5CYII=" alt=""> <a class="last" href="https://docs-preview.agoralab.co/"> 开发者中心 </a>   </div><div class="docs-content"><div class="docs-title"><h1 class="d-inline-block">Server-controlled Streaming Java API Reference for Linux</h1>  <div class="dropdown version-select"><a href="javascript:;" type="button" class="dropdown-toggle dropdown-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="version-dropdown"> 0.4.0 <span class="caret"></span></a><ul class="dropdown-menu" aria-labelledby="version-dropdown">  </ul></div>  </div>  <div class="docs-tabs"><div class="btn-group" role="group" aria-label="...">  <a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/index.html" type="button" class="btn btn-default ">概览</a>  <a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_streaming_controller.html" type="button" class="btn btn-default ">StreamingController</a>  <a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html" type="button" class="btn btn-default ">StreamingEventHandler</a>  <a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_transcoding.html" type="button" class="btn btn-default ">Transcoding</a>  <a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_transcoding_1_1_transcoding_user.html" type="button" class="btn btn-default ">TranscodingUser</a>  <a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html" type="button" class="btn btn-default ">Constants</a>  </div></div>  <div class="article-body theme-dark"> 
+<table class="memberdecls">
+<tbody><tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a408c7fde5f1283e2ed83758e6f051d55"><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html#a408c7fde5f1283e2ed83758e6f051d55">onStreamStatus</a> (String appId, String cname, String tid, String url, int status, String reason)</td></tr>
+
+<tr class="memitem:a3278493b13dbe6a2893a67c06d82be92"><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html#a3278493b13dbe6a2893a67c06d82be92">onDisconnectedWithTask</a> (String appId, String cname, String tid)</td></tr>
+
+<tr class="memitem:afd606f03a10ae31d081074562d4a38e4"><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html#afd606f03a10ae31d081074562d4a38e4">onReconnectedWithTask</a> (String appId, String cname, String tid)</td></tr>
+
+<tr class="memitem:a56611263b60be3b96772292aed649bd6"><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html#a56611263b60be3b96772292aed649bd6">onTaskDestroyed</a> (String appId, String cname, String tid, int exitCode, String reason)</td></tr>
+
+</tbody></table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>主回调事件。</p>
+<p><a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html">StreamingEventHandler</a> 接口类用于 SDK向 App 发送回调事件通知， App 通过继承该接口类的方法获取 SDK 的事件通知。</p>
+<dl class="section note"><dt>注解</dt><dd>在回调方法中，App 不应该做耗时或者调用可能会引起阻塞的 API，否则可能影响 SDK 的运行。 </dd></dl>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a408c7fde5f1283e2ed83758e6f051d55"></a>
+<h2 class="memtitle" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a408c7fde5f1283e2ed83758e6f051d55"><span class="permalink"><a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a408c7fde5f1283e2ed83758e6f051d55">◆&nbsp;</a></span>onStreamStatus()<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a408c7fde5f1283e2ed83758e6f051d55" data-toggle="tooltip" data-placement="top" title="Copy link"></a></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tbody><tr>
+          <td class="memname">void io.agora.streaming.StreamingEventHandler.onStreamStatus </td>
+          <td>(</td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>appId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>cname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>tid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>reason</em>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </tbody></table>
+</div><div class="memdoc">
+<p>RTMP 流的流状态回调。</p>
+<p>流状态变化时，会通过该回调通知 App。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tbody><tr><td class="paramname">appId</td><td>Agora 为 App 开发者签发的 APP ID。 </td></tr>
+    <tr><td class="paramname">cname</td><td>频道名称。 </td></tr>
+    <tr><td class="paramname">tid</td><td>该推流任务的 Task ID。调用 <a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_streaming_controller.html#ad3e874bd88409489b6b5b2d843a9e72e">createTask</a> 方法后会产生一个 Task ID。 </td></tr>
+    <tr><td class="paramname">url</td><td>CDN 推流地址。 </td></tr>
+    <tr><td class="paramname">status</td><td>RTMP 流的状态，详见： <ul>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a8256e44a5b98f69fbc747e272e351c31">STREAM_STATUS_OK(0)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a52669777da0690856ca25c2b5e8a770a">STREAM_STATUS_PUBLISH_START(20)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#ac346392a9926b25013adbbe1c68e6cb3">STREAM_STATUS_PUBLISH_FINISH(21)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#ad270090924aec1d81cec39042b6489a0">STREAM_STATUS_RTMP_HANDSHAKE_ERROR(30)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a93e900d90ecba702a594c83cca4ba6c1">STREAM_STATUS_RTMP_CONNECT_ERROR(31)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a9f5d731c01892e99dcd16cd68176fbd0">STREAM_STATUS_RTMP_PUBLISH_ERROR(32)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#acbb638f001aa3c157d675f601cdad2f5">STREAM_STATUS_RTMP_PUBLISH_BROKEN(33)</a> </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">reason</td><td>状态码 status 的解读。 </td></tr>
+  </tbody></table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3278493b13dbe6a2893a67c06d82be92"></a>
+<h2 class="memtitle" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a3278493b13dbe6a2893a67c06d82be92"><span class="permalink"><a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a3278493b13dbe6a2893a67c06d82be92">◆&nbsp;</a></span>onDisconnectedWithTask()<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a3278493b13dbe6a2893a67c06d82be92" data-toggle="tooltip" data-placement="top" title="Copy link"></a></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tbody><tr>
+          <td class="memname">void io.agora.streaming.StreamingEventHandler.onDisconnectedWithTask </td>
+          <td>(</td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>appId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>cname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>tid</em>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </tbody></table>
+</div><div class="memdoc">
+<p>SDK 和 Task 所在服务器断开连接的状态回调。</p>
+<p>SDK 和 Task 所在的服务器断开了连接，Task 状态不再能可靠地回调 App。</p>
+<dl class="section note"><dt>注解</dt><dd>如果超过一段时间都没有恢复，可以选择重新创建一个推流 Task，并联系声网排查问题。</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tbody><tr><td class="paramname">appId</td><td>Agora 为 App 开发者签发的 APP ID。 </td></tr>
+    <tr><td class="paramname">cname</td><td>频道名称。 </td></tr>
+    <tr><td class="paramname">tid</td><td>该推流任务的 Task ID。调用 <a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_streaming_controller.html#ad3e874bd88409489b6b5b2d843a9e72e">createTask</a> 方法后会产生一个 Task ID。 </td></tr>
+  </tbody></table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afd606f03a10ae31d081074562d4a38e4"></a>
+<h2 class="memtitle" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#afd606f03a10ae31d081074562d4a38e4"><span class="permalink"><a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#afd606f03a10ae31d081074562d4a38e4">◆&nbsp;</a></span>onReconnectedWithTask()<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#afd606f03a10ae31d081074562d4a38e4" data-toggle="tooltip" data-placement="top" title="Copy link"></a></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tbody><tr>
+          <td class="memname">void io.agora.streaming.StreamingEventHandler.onReconnectedWithTask </td>
+          <td>(</td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>appId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>cname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>tid</em>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </tbody></table>
+</div><div class="memdoc">
+<p>SDK 和 Task 所在服务器恢复连接的状态回调。</p>
+<p>SDK 和 Task 所在的服务器重连成功，Task 状态能够可靠地回调 App。</p>
+<dl class="section note"><dt>注解</dt><dd>App 应调用一次 <a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_streaming_controller.html#ae8e15a674c5506c0d5139b987d8d27e5">queryTask</a> 方法查询 Task 的最新状态。 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tbody><tr><td class="paramname">appId</td><td>Agora 为 App 开发者签发的 APP ID。 </td></tr>
+    <tr><td class="paramname">cname</td><td>频道名称。 </td></tr>
+    <tr><td class="paramname">tid</td><td>该推流任务的 Task ID。调用 <a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_streaming_controller.html#ad3e874bd88409489b6b5b2d843a9e72e">createTask</a> 方法后会产生一个 Task ID。 </td></tr>
+  </tbody></table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a56611263b60be3b96772292aed649bd6"></a>
+<h2 class="memtitle" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a56611263b60be3b96772292aed649bd6"><span class="permalink"><a href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a56611263b60be3b96772292aed649bd6">◆&nbsp;</a></span>onTaskDestroyed()<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/interfaceio_1_1agora_1_1streaming_1_1_streaming_event_handler.html?transId=0.4.0#a56611263b60be3b96772292aed649bd6" data-toggle="tooltip" data-placement="top" title="Copy link"></a></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tbody><tr>
+          <td class="memname">void io.agora.streaming.StreamingEventHandler.onTaskDestroyed </td>
+          <td>(</td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>appId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>cname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>tid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"><em>exitCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&nbsp;</td>
+          <td class="paramname"><em>reason</em>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </tbody></table>
+</div><div class="memdoc">
+<p>该推流任务被销毁的状态回调。 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tbody><tr><td class="paramname">appId</td><td>Agora 为 App 开发者签发的 APP ID。 </td></tr>
+    <tr><td class="paramname">cname</td><td>频道名称。 </td></tr>
+    <tr><td class="paramname">tid</td><td>该推流任务的 Task ID。调用 <a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_streaming_controller.html#ad3e874bd88409489b6b5b2d843a9e72e">createTask</a> 方法后会产生一个 Task ID。 </td></tr>
+    <tr><td class="paramname">exitCode</td><td>推流任务退出的状态码，详见： <ul>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#af551c5ceee35dde51cc4289920c401a7">TASK_EXIT_UNKNOWN(0)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a991556dd8ac939e72a845771260a335f">TASK_EXIT_DESTROYED(1)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a62c866b962a5a5b303d97211cab10947">TASK_EXIT_NO_AVAILABLE_USER_TIMEOUT(2)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#ae7219468db299ad9f105398c79f473e7">TASK_EXIT_ENGINE_CONNECTION_LOST(3)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#ad185ee2a260968e8cd9b5d977a218f0e">TASK_EXIT_ENGINE_CREATE_FAIL(4)</a> </li>
+<li>
+<a class="el" href="https://docs-preview.agoralab.co/cn/scrs/API%20Reference/streaming_java/0.4.0/classio_1_1agora_1_1streaming_1_1_constants.html#a5e522f88911590ddaf51d91d2dbcb3bb">TASK_EXIT_ENGINE_JOIN_CHANNEL_FAIL(5)</a> </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">reason</td><td>状态码 exitCode 的解读。 </td></tr>
+  </tbody></table>
+  </dd>
+</dl>
+
+</div>
+</div>
+ </div></div></div><div class="article-feedback-popup closed"><span class="close">X</span><div class="thumbs"><div class="question"> 本篇文章对你是否有帮助？ </div><div class="thumb-icons"><div class="thumb-icon thumbs-up"></div><div class="thumb-icon thumbs-down"></div><div class="thumbs-state hidden">打分成功！</div></div></div><div class="comments"><div id="feedback-form"><div class="feedback-option form-group hidden"><label for="">这篇文档的问题可能包括：</label>  <div><label><input type="checkbox" value="0"> 内容错误 </label></div>  <div><label><input type="checkbox" value="1"> 更新不及时 </label></div>  <div><label><input type="checkbox" value="2"> 链接错误 </label></div>  <div><label><input type="checkbox" value="3"> 内容缺失（缺少代码或其他） </label></div>  <div><label><input type="checkbox" value="4"> 太简单/步骤待完善 </label></div>  <div><label><input type="checkbox" value="5"> 看不懂 </label></div>  </div><div class="form-group"><label for="comment-input">更多建议:</label> <textarea id="comment-input" rows="3" class="form-control" placeholder="请详细描述在文档使用中遇到的问题或改进建议..."></textarea><div class="has-error valid-comment-error hidden">请输入您的建议</div></div><div class="form-group"><input type="email" id="email-input" class="form-control" placeholder="留下您的email，接收后续反馈"><div class="has-error valid-email-error hidden">邮箱格式不正确</div></div><div class="form-group feedback-success hidden"><div>我们收到了您的反馈。感谢您的建议。</div></div><div class="text-center"><button class="btn btn-primary submit">提交</button> <button class="btn btn-default cancel">忽略</button></div></div><div class="comments-footer"><h5 class="footer-title">你还可以:</h5><div><a href="https://agora-ticket.agora.io/" target="_blank"><i class="icon icon-ticket"></i> <span class="icon-text">支持</span></a><a class="right" href="https://docs.agora.io/cn/Agora%20Platform/community" target="_blank"><i class="icon icon-forum"></i> <span class="icon-text">访问论坛</span></a></div></div></div></div><div class="float-menu"><a class="menu-icon totop-icon hidden" href="javascript:;"><i class="icon totop"></i> </a><a class="menu-icon feedback-icon" href="javascript:;"><i class="icon feedback"></i></a></div></div><script src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/0.658d3bfc535e0b13800c.js.下载"></script><script src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/1.cdfce85e6d409b9b752b.js.下载"></script><script src="./Server-controlled Streaming Java API Reference for Linux_ io.agora.streaming.StreamingEventHandler接口 参考_files/docsgen.2c5f29f2bf36742a1e32.js.下载"></script></body></html>
