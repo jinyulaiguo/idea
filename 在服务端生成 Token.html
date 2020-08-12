@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>
+    在服务端生成 Token
+  </title>
+  <link rel="shortcut icon" href="https://agora-web-cdn.oss-cn-beijing.aliyuncs.com/dpv3/favicon.ico">
+<link rel="apple-touch-icon" href="https://docs-preview.agoralab.co/apple-touch-icon.png">
+
+<meta name="google" value="notranslate">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,user-scalable=0">
+
+<script async="" src="./在服务端生成 Token_files/gtm.js.下载"></script><script async="" src="./在服务端生成 Token_files/analytics.js.下载"></script><script src="./在服务端生成 Token_files/hm.js.下载"></script><script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?71179bbad7c652f8289d970d29f36014";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-76402370-1', 'auto', {
+    'allowLinker': true
+  });
+  ga('require', 'linker');
+  ga('linker:autoLink', ['www.agora.io', 'console.agora.io', 'dashboard.agora.io']);
+  ga('send', 'pageview');
+</script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);w['gtag'] = function() {
+          w[l].push(arguments)
+        };
+  })(window, document, 'script', 'dataLayer', 'GTM-TKTWGML');</script>
+<!-- End Google Tag Manager -->
+
+<link rel="stylesheet" href="./在服务端生成 Token_files/docsearch.min.css">
+<script type="text/javascript" src="./在服务端生成 Token_files/docsearch.min.js.下载"></script>
+<link href="./在服务端生成 Token_files/1.74b13ede69b54aa437d8.css" rel="stylesheet"><link href="./在服务端生成 Token_files/docs.6427a3e27891beb74b7f.css" rel="stylesheet"><style id="tsbrowser_video_independent_player_style" type="text/css">
+      [tsbrowser_force_max_size] {
+        width: 100% !important;
+        height: 100% !important;
+        left: 0px !important;
+        top: 0px !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        transform: none !important;
+      }
+      [tsbrowser_force_fixed] {
+        position: fixed !important;
+        z-index: 9999 !important;
+        background: black !important;
+      }
+      [tsbrowser_force_hidden] {
+        opacity: 0 !important;
+        z-index: 0 !important;
+      }
+      [tsbrowser_hide_scrollbar] {
+        overflow: hidden !important;
+      }
+      [tsbrowser_display_none] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+      [tsbrowser_force_show] {
+        display: black !important;
+        visibility: visible !important;
+        opacity: 0;
+      }</style></head>
+
+<body>
+  <!--[if lt IE 10]>
+  <p class="browsehappy">您正在使用 <strong>旧浏览器</strong> . 为了更好的体验，请 <a href="http://browsehappy.com/">更新</a> 您的浏览器.</p>
+<![endif]-->
+  <nav class="navbar navbar-default" id="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-toggle sidebar-toggle" href="javascript:;">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="navbar-brand" href="https://docs-preview.agoralab.co/">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAMAAADwSaEZAAACAVBMVEUAAAD///9///9Vqv9Av/8zzP8qqv8ktv8gn/8as/8Xov8Vqv8SpP8Qn/8Ppf8Oqv8Nof8Mov8Ln/8Ko/8Jof8Snv8Qpf8Qn/8Pov8Pnf8PoP8Oo/8Nof8No/8Nn/8Mnv8MoP8Mov8Ln/8Lof8Lnf8Ln/8Kov8Jof8Nof8Nnv8NoP8Nnf8MoP8Mn/8Lnf8Ln/8LoP8Knf8Kn/8KoP8Knv8Kn/8KoP8Kn/8Jnf8Jnv8Jn/8Mnf8Mnv8Ln/8LoP8Lnv8Lnf8Lnv8Kn/8Kn/8Knf8Knv8Kn/8Knv8Knf8Jn/8Jnv8Ln/8Lnf8Lnv8Ln/8Lnv8Lnv8Kn/8Knv8Knf8Kn/8Knv0Kn/0Knv0Knf0Knv0Jn/0Jnf0Jnv0Ln/0Lnv0Knf0Kn/0Knf0Knv0Knv0Knf0Knv0Jnv0Jnf0Jnv0Jnv0Jnv0Knv4Knf4Knv4Knf4Knv4Knf4Knv4Knf4Knv4Knv4Knf4Knv4Knv4Knv4Jnf4Jnv4Jnf4Jnv4Jnv4Jnv4Jnv4Jnf4Knf4Knv4Knf4Knf4Knv4Knv4Knf4Knv4Knv4Knf4Jnf4Jnv4Jnv4Jnv4Jnv4Jnv4Jnv4Knf4Knf4Knv4Knf4Knv4Knv4Knf4Knf4Knv4Knv4Knf4Knv4Jnf4Jnf4Jnv4Jnf4Jnv4Jnv4Jnv4Jnf4Jnf4Jnv4Jnf4Jnv4Jnf2YbaeiAAAAqnRSTlMAAQIDBAUGBwgKCwwOEBESExYYGRsdHyAhIiMkJicoKissLS4vMDQ2OTo7PD5AREVGSUpLTE1OUFFUVVZXWltcXmFiZWZnaGlrbXFyc3R1dnl6fH1/gYKDhYaHiouPkJKUl5iZmqCjpKWmqKusra+wsbK0tba3uLq7vL2+v8LDxcbJyszOz9DR0tTW2Nrc3d/h4uPm5+jp6uvt7u/w8fLz9PX29/n6+/z9/pdzH7wAAAKgSURBVFjD7djpV1JBGMDh98o1RExoIaLVFqLNyiXLFrPSstwqbLPFsszQSisrjbJSIlITIUtLMVsQmr+yL3ma4d4789KZ05d4P8rvPIdzz51FADKTmcz8mzFvqjh3w3ff1+I9XrJQ+7HqafDl4STXqb7v5M8kA1fKFtCfL7o4RQixIyS1sp9oZ7xp8XygNH4jBIWZqsNEf37ccgEAgK3n9x+E2JYgMZ6v9SaA3AGCw5QLPwl3Bt3qQ4LDrF1ENHNPCQ5zhkhaw8M8k0Qa5vhApGGWAJGGKZ1EHtZE5GEbE5o01nFo8zKzbd2us8H0MOVlajhcTq3s5a1zaWAHUrLpapUNVj9CY8obthpZo03OY7FSNurP14sOJnHYPaYZNXgWdSjMHqeTmQKj16cNgx1hkkbDRZI3gcDa6SKSY7x8TyCw93RRxdlXsqNCbAmz+dl4O95VIVZIB37uVlwoxKpwjx8AwDQrwk7TwX7+iTMswprpYBsf84uwFjpYxcc6RNglOvDwsccizEsHe/hYSIQx73UNH/skworooJNrbRC+Zy46+GLmYV4hljVDF7t52GvxQn9AF684Vili16hlkn3Gi+ktAlvJJOF8I6wWdQa8YJpeVd/amUBhR9nouqIXFUzhTqeccba6m6ttimPYE70+JQuuT/0X40wSfT2wjKV0yTYHfZxXhNO4a0jFYK+mjPfWOBUAAMuOa9E0L3t39Op4ZGBo+i9ujtaQxGsoOCclYrA9LhGDw0mJGJTEJGKw9p1YmMBiYPMLqNgx+wgWA7Vhlmd1LQVwfcRiAI72hBE1Wg4AAO4xNAaw4qbut+sry5p/GN14DMBa2cN6icHLzLW56DkeA4DsrSdbnw1FPkcDT243F2t/DnHXdUfRWGb+4/kFZM0/2fkeWwoAAAAASUVORK5CYII=" alt="">
+        <span>开发者中心</span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse mobile" id="navbar-collapse" aria-expanded="false">
+      <ul class="nav navbar-nav navbar-right login-nav">
+        <li class="without-login">
+          <a href="https://console.agora.io/cn/signup">注册/登录</a>
+        </li>
+        <li class="with-login hidden dropdown">
+          <a href="javascript:;" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="username"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="https://console.agora.io/">我的主页</a></li>
+            <li><a href="https://console.agora.io/signout">退出</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right main-nav" style="width: 476.25px; max-width: 100%;">
+        <li>
+          <a href="https://docs-preview.agoralab.co/cn/faq">FAQ</a>
+        </li>
+        <li>
+          <a href="https://docs.agora.io/cn/Agora%20Platform/community" target="_blank">开发者社区</a>
+        </li>
+        <li>
+          <a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/downloads">下载</a>
+        </li>
+        <li>
+          <a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/sampleapps">场景方案 Demo</a>
+        </li>
+        <li>
+          <a href="https://agora-ticket.agora.io/">支持</a>
+        </li>
+        <li class="dropdown language-switch">
+          <a href="javascript:;" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="language" class="mr-1">中文</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="" value="en"><a href="javascript:;">English</a></li>
+            <li class="active" value="cn"><a href="javascript:;">中文</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="search-nav search-btn">
+          <form action="https://docs-preview.agoralab.co/cn/search" class="search-form">
+            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="form-control search-box ds-hint" autocomplete="off" readonly="" aria-hidden="true" spellcheck="false" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(255, 255, 255, 0.15);"><input type="text" name="q" class="form-control search-box ds-input" placeholder="搜索关键词" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Helvetica Neue&quot;, Arial, &quot;pingfang SC&quot;, &quot;Microsoft YaHei&quot;; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span>
+            <input type="hidden" name="platform" value="Java">
+            <input type="hidden" name="product" value="Interactive Broadcast">
+            <img class="icon search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAFPFKMkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAARKADAAQAAAABAAAARAAAAADjEeGFAAAE1klEQVR4Ae2bX4hVVRTGvVb4YI4kgUzFUIFYRGkPFtbAjEHiQIQP9tofRISQIH0XeleQ3pTCp3qIQqIefFOKxplxxhR8UQmjmhwVKS3IMr3+vjt7X/bd99xz9rnnnPFeZy9Y7H/f+tY63zlzz99ZsqQSqxvrSK51u0j3EdtvaV1Qy4I/APiw5vIENNP7ZD0xZkue1NbIMgsC81YqCMDtNoClpp3EV7YB3AkAA3J37r7ss5ESfs7fOOayd4QNSgOnrdn4RtsJyPxMCzBkQNB7IpQJT6P9KSu+T0UippBCIqYKBaS+Zy/myqNgP4CpM/ioP584BvgYPpK0yHwbeRJOR+Vs4gKTrF3vtLbUW5j2xu4w/HDvVHaneWXxK9HcfgL+VsdaGoHFJLYE/qNg7KAA891AcRMZzWSpRGmJ4lpUoIcU4LgfxL/CZ/FL+BF8aEFKJNHbuLW2n04WnreLtB9VUpRNEEoO/qZiQvFBOPi0C3KTKgb7MyhJCAiyOTGGYF0MIb92E+dytPQhe1qE2NqWhYzBfEj9QAYs3zKkLxviqaxIcLsM9lAWtut1EoyZJLbRn+55OzDtYW+cfovTdTWBgRRjL7ltXeHXIoE5csH8gnIFR3BUICoQFYgKLFoFOH/swKfxf037wYKKQdJv8TT7rvKCyH7LVDCelIy1r22FSeulzJHgqknyUhohmCGD+y8N19UaxMOG/J0QArDrDX53CD4YA+kdEQcHAAT+R96YTH4RYrmuxsG/0Yiq12uZCUIBhnA4FG9xJm6dHYe0SY/A/Lj//YnA8apAXAMWUshYHkLUWGPwp/LEpWKNxHkP1h8Ul0qcdxG+baaYV0NiwT5o8N+H4HNhINY5RZa5z+dhJavhVmsT0CY+hGF+1MGoO+HGl9qHXPe61m7TOYXfsBOmHXfGlRazikTNE5xJeoG2eR6ivzDFhMhMMSdMkWqqU6bfi/k0ZAMqwzi76XhlSSJxVCAqEBWICkQFogJRgahAVCAqUEQBLtv1BPA43ngARxtiJwG9WSRv0djyHrRRCRszQvMl/qhX2EXG3+B6UHwJv4rr0+cn8BfwrfhzuGs3GWyv1Wqfu5N90ZcQuH06Trfx9dq73RRP7Gv4ZZE4trMbrnsSQ9Huuwp9xrehjELgWY3/glv7mc6yMrgr46BA/UZYS3xvUjQ55PtsAtpreON/BIrylh5PYXqNZu2n0hM4hCT5xCai/cxZ6p0uhc04Rab/a0PBssmzwsmlrv+jXTBDCeEUZR+Gq8BnSqBMpSDHOSUytiUVXGAx5AVNJ/qzzoJ/ynSWincRQZcHTzlMvzv93uhS5Id2d9GerrIqL9eZKnMV4qbQHx1RvihE1iEY/tedHOrqQq53jQInnIJ/oz9YVrVwfexw6xbglbK4K+Wh0O1O4erqFdaz3SQl7gH8AO6bhL+336Dm3SAK3oPrJaNrugzXnt6EP+RzMqdvTN7Hj+Eh1pfCLGfL9uJ/hWyhh5lirJtE3Szqo2D3BakLlTADvsBFx6Xe7aYVQ/E6Oh43rt8Z3c1ewy9yRztH29HMhh8FsDEBNMncZjhuJKzd31MSBnffYjNsWiVHTF8oigRRmKQ9lSLMlST8opkzwuiOWGc0PZKw33ctGg3ihkYFogJRgahAVKAPFbgLDV5BK/9/r44AAAAASUVORK5CYII=" alt="search">
+            <img class="icon close hidden" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAAECElEQVRoBe1bu24TQRT1A4GERIUEQkoBFV+ARIMEVCjQAyJUSLFT0PIVFEgUsR0h4SAUHl9AjeAb0hFXUFBbFHbMuau9y/VkXnc9G1OMJWtm5957zpw7j91ZJ61Wss/u7u6CwRaLRYfrSyU5OY3kSUaJtBQtI51OSxFrunB2LqFhTdJiaeVYOWPMdHhH34VCICaQy7dqN5miAMygCq2sRIGYQfnakYHBYDCjr81cjvmRzVa12QCiAhlBAvgC2xxglgSASdNF+2RnZ+eqaafrM7ZGaqPAdrtNm+qGy8e6y5bTcNLv9wu7K4knQG0aZQ5OBHCDLZBtUQDsnMucgXAGMN3+RE9qAcf7N+IPRfNS1bmW2YuIy6U5xwpzLl/yJ0L4z8tY5x5A9iBxCdLydUBDyHjRxBwgO9Dr9c7GKuR4LtXEFCgV0u7ImxyDxpQqYkkI8GIMZQZCc0B2KIrYRihBqK7tgJc4hnDVDpjxxTWtQ3yPrMZAI2UAsW8CbtmcM5AzkDOQOAN7e3uX60KOx+OLvljrMz0FYMvbnM1mv0aj0SMfgM2G2HfT6fT3cDi8YrNTm5MYtgvkMJ/PDzTkRIqbyxbFHh8fn6PS9vHenQDyECAfKLDb7T7e3t4u6jYgapOkuLyGc9cRtds+XmIKiCXXkBJukDiGXEsaTewjr0OqIraRY/Lc54kEu3dMKV5+olItA+SYi3YVKcX5lpPA/VfFk+RHXH3llk6n89w3e9nPLNXENKYAucVASPdrzTrnOBWxOZHwMF/satpNhsijx9gk5fTKMY/ZZFhxFLGLlEEkOWWhnAdstpZB4hApo2rJvcSxpHXIncRaUi25c1ZjrF6UYKrNgcaXZzvOz5+4Q7nMGcgZyBnIGcgZyBnIGVhnBpxPW6FO4WlsEz6fcXh5Fjqqh7Bi7fQCGy82xihvgPcOHqp+xsayn1rw/v7+JbxR+QHS8xVIu02/9TzFE94Bt6UshdDipYrA/oKjzD1xHayqBTMinRhQf4/O0A/bxQePs3NkfivViHuETkB4m89tJX1UUVswozchvAmh3N+VBTNQCuFNCuV+JhPMgHWEn4ZQ7l9ywQwcI/w0hXK/GhPMBC7hsH+H4OoVWek/QVlrM2K+UNm4YO6ATTjbUDYulLmcb1vYIUVJUxc4D1BWtzCJi9vZBl4D3pRtTdUbHeHAGn0Joa9kElLfx21Ja0RwQOjSGrVN9SaFJxWsEWpm/7SEJxG8itBY4fB7EvO23cQzr1cSnFKo2THXiK8qvJbgJoU2LVwtmH7lx/HwGzp2XXRugvrSZiRsSaqOER9hmvc0BGrBDE5/YYCRfotvr84xjXG0ZSn8Lg7/fezm1f+iaHGyf85AzkDOQM7A/5iBvxzpPw6SSAzWAAAAAElFTkSuQmCC" alt="close">
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="container main-container">
+    <div class="sidebar">
+  <div class="product-select dropdown">
+    <a href="javascript:;" type="button" class="dropdown-toggle dropdown-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="title">视频互动直播</span>
+      <span class="caret"></span>
+    </a>
+    <div class="dropdown-menu">
+      <ul>
+      
+      <!-- <ul> -->
+        <!-- <li class="level1"><a>产品</a></li> -->
+        
+        <!-- <li> -->
+          <!-- <ul> -->
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Voice">语音通话</a></li>
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Video">视频通话</a></li>
+            
+              <li class="leaf active"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast">视频互动直播</a></li>
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Audio%20Broadcast">音频互动直播</a></li>
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Interactive%20Gaming">互动游戏</a></li>
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/RTSA">实时码流加速</a></li>
+            
+          <!-- </ul> -->
+        <!-- </li> -->
+        
+      <!-- </ul> -->
+      
+      <!-- <ul> -->
+        <!-- <li class="level1"><a>插件</a></li> -->
+        
+        <!-- <li> -->
+          <!-- <ul> -->
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/cloud-recording">云端录制</a></li>
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Recording">本地服务端录制</a></li>
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Real-time-Messaging">实时消息</a></li>
+            
+          <!-- </ul> -->
+        <!-- </li> -->
+        
+      <!-- </ul> -->
+      
+      <!-- <ul> -->
+        <!-- <li class="level1"><a>Agora 平台</a></li> -->
+        
+        <!-- <li> -->
+          <!-- <ul> -->
+            
+              <li class="leaf "><a href="https://docs-preview.agoralab.co/cn/Agora%20Platform">Agora 平台</a></li>
+            
+          <!-- </ul> -->
+        <!-- </li> -->
+        
+      <!-- </ul> -->
+      
+      </ul>
+    </div>
+  </div>
+  
+  <div class="docs-tree">
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="javascript:;">
+          <span>产品概述</span>
+          
+          <span class="caret"></span>
+          
+        </a>
+        
+        <ul>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/product_live?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="产品概述">
+              <span>产品概述</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/release_android_video?platform=Android" class="preventDefault" target="" data-toggle="popover" title="发版说明">
+              <span>发版说明</span>
+              
+            </a>
+            
+          </li>
+          
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/billing_rtc?platform=All%20Platforms">
+          <span>计费说明</span>
+          
+        </a>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/start_live_android?platform=Android">
+          <span>快速开始</span>
+          
+        </a>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class="open level1 ">
+        <a href="javascript:;">
+          <span>进阶功能</span>
+          
+          <span class="caret"></span>
+          
+        </a>
+        
+        <ul>
+          
+          <li class="open level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="频道管理">
+              <span>频道管理</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class="active level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java" class="preventDefault" target="" data-toggle="popover" title="生成 Token">
+                  <span>生成 Token</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/switch_channel_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="快速切换直播频道">
+                  <span>快速切换直播频道</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/channel_connection_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="频道连接状态管理">
+                  <span>频道连接状态管理</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/multiple_channel_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="加入多频道">
+                  <span>加入多频道</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="音频管理">
+              <span>音频管理</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/volume_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="管理通话音量">
+                  <span>管理通话音量</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/audio_profile_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="设置音频属性">
+                  <span>设置音频属性</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/audio_effect_mixing_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="播放音效与混音文件">
+                  <span>播放音效与混音文件</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/voice_changer_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="美声与音效">
+                  <span>美声与音效</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/in-ear_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="耳返">
+                  <span>耳返</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/custom_audio_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="自定义音频采集和渲染">
+                  <span>自定义音频采集和渲染</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/raw_data_audio_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="原始音频数据">
+                  <span>原始音频数据</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="视频管理">
+              <span>视频管理</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/video_profile_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="设置视频属性">
+                  <span>设置视频属性</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/image_enhancement_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="美颜">
+                  <span>美颜</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/video_rotation_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="视频采集旋转">
+                  <span>视频采集旋转</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/screensharing_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="屏幕共享">
+                  <span>屏幕共享</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/custom_video_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="自定义视频采集和渲染">
+                  <span>自定义视频采集和渲染</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/raw_data_video_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="原始视频数据">
+                  <span>原始视频数据</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="高级媒体流管理">
+              <span>高级媒体流管理</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/rtc_recording_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="客户端录制">
+                  <span>客户端录制</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/multi_user_video_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="七人以上视频场景">
+                  <span>七人以上视频场景</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/media_relay_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="跨直播间连麦">
+                  <span>跨直播间连麦</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/cdn_streaming_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="推流到 CDN">
+                  <span>推流到 CDN</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/inject_stream_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="输入在线媒体流">
+                  <span>输入在线媒体流</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/cloudproxy_native?platform=Android" class="preventDefault" target="" data-toggle="popover" title="使用云代理">
+                  <span>使用云代理</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/channel_encryption_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="媒体流加密">
+                  <span>媒体流加密</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/mediaplayer_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="媒体播放器组件">
+                  <span>媒体播放器组件</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/web_in_app?platform=Web" class="preventDefault" target="" data-toggle="popover" title="H5 实时直播">
+                  <span>H5 实时直播</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/inject_stream_restful?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="输入在线媒体流（RESTful）">
+                  <span>输入在线媒体流（RESTful）</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="设备管理">
+              <span>设备管理</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/test_switch_device_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="音视频设备测试与切换">
+                  <span>音视频设备测试与切换</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/camera_exposure_focus_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="摄像头曝光与对焦">
+                  <span>摄像头曝光与对焦</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="体验提升">
+              <span>体验提升</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/lastmile_quality_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="通话前探测网络质量">
+                  <span>通话前探测网络质量</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/in-call_quality_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="通话中质量检测">
+                  <span>通话中质量检测</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/fallback_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="视频流回退">
+                  <span>视频流回退</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/rate_call_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="通话后评分">
+                  <span>通话后评分</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="javascript:;">
+          <span>场景方案</span>
+          
+          <span class="caret"></span>
+          
+        </a>
+        
+        <ul>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/ai_class?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="AI 互动课堂">
+              <span>AI 互动课堂</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="1 对 N 在线小班课">
+              <span>1 对 N 在线小班课</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/small_classroom_overview?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="概览">
+                  <span>概览</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/small_classroom_student_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="学生端实现">
+                  <span>学生端实现</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/small_classroom_teacher_web?platform=Web" class="preventDefault" target="" data-toggle="popover" title="教师端实现">
+                  <span>教师端实现</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="互动直播大班课">
+              <span>互动直播大班课</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/big_class_overview?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="概览">
+                  <span>概览</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/big_class_student_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="学生端实现">
+                  <span>学生端实现</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/big_class_teacher_web?platform=Web" class="preventDefault" target="" data-toggle="popover" title="教师端实现">
+                  <span>教师端实现</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/video_conference?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="视频会议">
+              <span>视频会议</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="单主播直播">
+              <span>单主播直播</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/single_host_overview?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="概览">
+                  <span>概览</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/single_host_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="客户端实现">
+                  <span>客户端实现</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="多人连麦直播">
+              <span>多人连麦直播</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/co_host_overview?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="概览">
+                  <span>概览</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/co_host_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="客户端实现">
+                  <span>客户端实现</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="视频 PK 连麦">
+              <span>视频 PK 连麦</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/pk_host_overview?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="概览">
+                  <span>概览</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/pk_host_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="客户端实现">
+                  <span>客户端实现</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="javascript:;" class="preventDefault" target="" data-toggle="popover" title="虚拟主播">
+              <span>虚拟主播</span>
+              
+              <span class="caret"></span>
+              
+            </a>
+            
+            <ul>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/virtual_host_overview?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="概览">
+                  <span>概览</span>
+                </a>
+              </li>
+              
+              <li class=" level3">
+                <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/virtual_host_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="客户端实现">
+                  <span>客户端实现</span>
+                </a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="javascript:;">
+          <span>最佳实践</span>
+          
+          <span class="caret"></span>
+          
+        </a>
+        
+        <ul>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/api_config_before_join?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="加入频道前的 API 调用">
+              <span>加入频道前的 API 调用</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/autoplay_policy_web?platform=Web" class="preventDefault" target="" data-toggle="popover" title="处理浏览器的自动播放策略">
+              <span>处理浏览器的自动播放策略</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/multi_user_video?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="多人视频场景">
+              <span>多人视频场景</span>
+              
+            </a>
+            
+          </li>
+          
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="javascript:;">
+          <span>API 参考</span>
+          
+          <span class="caret"></span>
+          
+        </a>
+        
+        <ul>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/java/index.html" class="preventDefault" target="" data-toggle="popover" title="Android">
+              <span>Android</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/oc/docs/headers/Agora-Objective-C-API-Overview.html" class="preventDefault" target="" data-toggle="popover" title="iOS/macOS">
+              <span>iOS/macOS</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/wechat/index.html" class="preventDefault" target="" data-toggle="popover" title="微信小程序">
+              <span>微信小程序</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/web/index.html" class="preventDefault" target="" data-toggle="popover" title="Web">
+              <span>Web</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/electron/index.html" class="preventDefault" target="" data-toggle="popover" title="Electron">
+              <span>Electron</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/cpp/index.html" class="preventDefault" target="" data-toggle="popover" title="C++/全平台">
+              <span>C++/全平台</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/API%20Reference/unity/index.html" class="preventDefault" target="" data-toggle="popover" title="Unity">
+              <span>Unity</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/api_align?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="核心方法对照表">
+              <span>核心方法对照表</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/rtc_restful_api?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="服务端 RESTful API">
+              <span>服务端 RESTful API</span>
+              
+            </a>
+            
+          </li>
+          
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/downloads">
+          <span>SDK 和示例代码</span>
+          
+        </a>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="javascript:;">
+          <span>教育场景</span>
+          
+          <span class="caret"></span>
+          
+        </a>
+        
+        <ul>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/edu_release_note_android?platform=Android" class="preventDefault" target="" data-toggle="popover" title="发版说明">
+              <span>发版说明</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/one_to_one_class?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="1 对 1 互动教学">
+              <span>1 对 1 互动教学</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/one_to_many_class?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="1 对 N 在线小班课">
+              <span>1 对 N 在线小班课</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/interactive_class?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="互动直播大班课">
+              <span>互动直播大班课</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/education_functions?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="辅助功能">
+              <span>辅助功能</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/education_best_practice?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="最佳实践">
+              <span>最佳实践</span>
+              
+            </a>
+            
+          </li>
+          
+          <li class=" level2 ">
+            <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/edu_faq?platform=All%20Platforms" class="preventDefault" target="" data-toggle="popover" title="常见问题">
+              <span>常见问题</span>
+              
+            </a>
+            
+          </li>
+          
+        </ul>
+        
+      </li>
+    </ul>
+    
+    <ul>
+      <li class=" level1 ">
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/faq">
+          <span>FAQ</span>
+          
+        </a>
+        
+      </li>
+    </ul>
+    
+    <div class="hr"></div>
+    <ul>
+      <li class="level1">
+        <a href="javascript:;">
+          <span>相关链接</span>
+          <span class="caret"></span>
+        </a>
+        <ul>
+          <li class="level2">
+            <a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/console_overview">
+              <span>控制台</span>
+            </a>
+          </li>
+          <li class="level2">
+            <a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/aa_guide">
+              <span>水晶球</span>
+            </a>
+          </li>
+          <li class="level2">
+            <a href="https://docs-preview.agoralab.co/cn/Agora%20Platform/dashboard_restful_communication">
+              <span>Restful API (New)</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
+</div>
+    <div class="docs-container">
+  <div class="breadcrumb">
+    <img class="home" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAFNQDtUAAAABGdBTUEAALGPC/xhBQAAAqFJREFUWAntVjtPG0EQxmcIkilQGoihyE+gsUiRiMYRHUoqi5pIthPZPQWFFSlKk8I0fil0aVAkKhRFoaAAQWWlIhRpoqQwAiEhiii2hC/fXG5W473bu8NxCIVPutvZeXwzuzM7eyMjQU82m7VZbhEBxo47OgKHSYxGoxGj8ZpPsVgcz+VyH8lslD7tdvsXjfQo8D/Tfr8qLjh6a9v2MwnEcStfULgvFSStlGKx2BEEB671AdFScYA0pUCmgaDVinQBZBOI6acKVA+EhMQzKrCBrnDMG8UKTrbcCa39m6Bd8iaGeJgTbNGHVCrVbjabX0y6aj+lAgwfYb4neUQj95f1en3Sw5cMlFoLlXRP8kx0PB5fqFarjiNPJIiCDtxjkzHx9dTouQuyNcrCQJyC0D0b0YaCaDuQz+cfonYOw7Q9dcIGqJcN0Cs8TyQSd8vl8gXP5egLAoATKE1LRaIty1qq1WrbOr8HhNq57OC6Ms1xfjZxfpalTIHQ+rvd7r4UBtBnKMAplisQZmAp6vZinhyxpDUs6VUPT076pcPOTiTcfw9Cp5dePN2gkAYSibwv2JnnzkTLJJ7jEPQPVhyOwx2IvAOePhDVEo33BaquDP0xtsHZeJNOp1czmcwV86KO1woEnW8Wzrfwzgc5QEBf8cfwpFKpHAfpSVmkQNAtn8NoHa9avQQx0W73WENPf23SYb4xkEKhMNPpdLag+ICV/2ZEUJ+xk0/R3r774XgCKZVKVqvVWsSdcIcMcAm9BMCcn3FUHoJ4B7z3Ll4nmUx+gp+eXusJRAdHWkJ/AHUbfe530Xl0dMb/mg/kthlE8H43ViRc5P0UtbOMY+rkGrU0gTn9OoWm289B34HA6TlOwK4ERZMD2+4rkFuTGrmgIX2rduA3OrTTJvcMVJ8AAAAASUVORK5CYII=" alt="">
+    <a href="https://docs-preview.agoralab.co/" class="last">
+      开发者中心
+    </a>
+    
+    <span class="separate last">&gt;</span>
+    
+    
+    <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/product_live?platform=All%20Platforms" class="last">视频互动直播</a>
+    
+    <span class="separate last">&gt;</span>
+    
+    
+    <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java" class="last">进阶功能</a>
+    
+    <span class="separate last">&gt;</span>
+    
+    
+    <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java" class="last">频道管理</a>
+    
+    <span class="separate last">&gt;</span>
+    
+    
+    <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java" class="last">生成 Token</a>
+    
+    
+  </div>
+  <div class="docs-content">
+    <div class="docs-title">
+      <h1>在服务端生成 Token</h1>
+      
+      <a href="https://github.com/AgoraIO/Documentation/tree/master/cn/Interactive%20Broadcast/token_server_java.md" target="_blank" class="icon-edit">
+        <img width="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAFpg2qXAAAABGdBTUEAALGPC/xhBQAAAslJREFUWAntmb9rFEEUx3OiAX8HJUVIQNCIjYKojQhiLEQQIY2FYGVvLCLYCmKhdcA/QbCzE5sr/IVgo0QrFS38jT8holyifl5uZnk7N7O7d7O7iOzAy3vz3ne+73uPu2XuMjQUtf5016EUieRSCdl4kz2owgnozqTAwi8rSXa3KiEVkkcSRLUBrX54Nei2FmD8Jl1LYoqj2AsBJUknaNl9JqjVSnAWX6NH2upC7eQ1mDVpD/QIB7CC4lICUC9OCskCOMHGC0xAEgAcN22XXarobgxwB/6zW+vZA3rYk/QlAF4yzD7X9p1pct0JMLA3amhj0XOB7Lci1OFU3+ScXqcZnHj7IIT7HBK9XZVHmPqMWDAMd4k32L3xHT5bdnWcWv4W0htK2ldi/4Mun6pBNBP4pyfAe3sjdq5UkRDuwux6VAo5bMcso/Jvo8ghOqvIdLg4MDEsVzWTir/FkN5SRDp8GUP6VDOp+H4M6UdFpMNrMaQLmknFF2JIZyEawb4rQglPDkwqByFYMoST+Fcm3h9FaogN17I7yN8tZZBOQySKL2PF7rzRXfskSN2nURn8ZpHFK3eCrHpTaybQTKCZQJEJ8Ajaij2TZ5FZd/AjRc7WikHUAeyLEelzz0luq1WUrxkiTmEdn8JA7oqPp/IcYi4GBIXSPylMVy5MN6DhMHY9pCiQf09+j+apPKbhZuxBQFAoPU9hvHJxugEN5ecze5sLCXPzN0ms1TyVxzQ8jLl3WleYu58j4f2VZRDBK4scouEouAVMnpvDBc7IvW+Ga9xcAWz5EATfNmN7jB/D9mIfTE47+bpytHwFfTAi4LRWZOJ3+N3YBPYEe43t7IO2Gigi1mDJvyCI7ZJnZxuT72q1Xt8zmyHmOKOQ92yb92P+j+rVzC3FGhSM2PMgZ1Loajf3GMqJvBZZgtdzWKyu9QvBn+pq1vT5bybwF3G+YbQT3T0nAAAAAElFTkSuQmCC" alt="">
+        <span>Edit</span>
+      </a>
+      
+    </div>
+    
+    <div class="docs-tabs">
+      <div class="btn-group" role="group" aria-label="...">
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_cpp?platform=CPP" type="button" class="btn btn-default ">CPP</a>
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java" type="button" class="btn btn-default active">Java</a>
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_python?platform=Python" type="button" class="btn btn-default ">Python</a>
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_php?platform=PHP" type="button" class="btn btn-default ">PHP</a>
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_nodejs?platform=Node.js" type="button" class="btn btn-default ">Node.js</a>
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_go?platform=Go" type="button" class="btn btn-default ">Go</a>
+      
+        <a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_ruby?platform=Ruby" type="button" class="btn btn-default ">Ruby</a>
+      
+      </div>
+    </div>
+    
+    <div class="article-body cn theme-dark">
+      <p>本页为 Agora Native SDK v2.1+、Agora Web SDK v2.4+、Agora Recording SDK v2.1+ 以及 Agora RTSA SDK  的用户演示如何使用我们提供的 Demo 快速生成一个 RTC Token，并提供 Token 生成相关的 Java API 参考。</p>
+<h2 id="token-代码仓库说明" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#token-代码仓库说明">Token 代码仓库说明<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#token-代码仓库说明" data-toggle="tooltip" data-placement="top" title="" data-original-title="Copy link"></a></h2>
+<p>你需要在业务服务器自行部署 Token 生成器生成 Token。我们的 <a href="https://github.com/AgoraIO/Tools/tree/master/DynamicKey/AgoraDynamicKey">GitHub 开源仓库</a> 为你提供了 Token 生成源码以及使用这些源码生成 Token 的简单示例。我们目前支持 C++、Java、Python、PHP、Ruby、Node.js、Go、C# 等语言。</p>
+<p><a href="https://github.com/AgoraIO/Tools/tree/master/DynamicKey/AgoraDynamicKey">GitHub 开源仓库</a> 的 <b>./&lt;language&gt;/src</b> 文件夹下包含生成各种版本的 Dynamic key 和 Token 的源码。其中：<strong>AccessToken</strong> 和 <strong>RtcTokenBuilder</strong> 用于为以下 SDK 生成 Token：</p>
+<ul>
+<li>Agora Native SDK (Java, Objective-C, C++, Electron) v2.1+</li>
+<li>Agora Web SDK v2.4+</li>
+<li>Agora Recording SDK v2.1+ </li>
+<li>Agora RTSA SDK</li>
+</ul>
+<p>我们推荐使用 <strong>RtcTokenBuilder</strong> 而不是 <strong>AccessToken</strong> 生成 Token。<strong>AccessToken</strong> 实现了底层的核心算法，<strong>RtcTokenBuilder</strong> 实际上对 <strong>AccessToken</strong> 又进行了一层封装，提供了更为简化易懂的 Token 生成接口。</p>
+<p>开源仓库的 <strong>./&lt;language&gt;/sample</strong> 文件夹下包含用于演示 Token 生成的示例代码。其中， <strong>RtcTokenBuilderSample</strong> 是我们基于 <strong>RtcTokenBuilder</strong> 编写的一个简单的 Token 生成器示例程序。你可以根据自己的业务逻辑对我们的示例程序做相应调整。</p>
+<h2 id="快速生成-rtc-token" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#快速生成-rtc-token">快速生成 RTC Token<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#快速生成-rtc-token" data-toggle="tooltip" data-placement="top" title="" data-original-title="Copy link"></a></h2>
+<div class="alert note">体验该示例项目需要 JDK 1.8 或以上环境。</div>
+
+<p>下面我们以 <strong>RtcTokenBuilderSample.java</strong> 为例演示 Token 生成的过程：</p>
+<ol>
+<li>将 GitHub 仓库同步到本地。</li>
+<li>将 <strong>/DynamicKey/AgoraDynamicKey/java</strong> 作为项目导入到你的 Eclipse IDE 中。</li>
+<li>打开 <strong>/java/src/io/agora/sample/RtcTokenBuilderSample.java</strong> 。</li>
+<li>用你自己的 App ID、App 证书、用户 ID 以及 Channel Name 替换示例代码中的伪码。关于如何获取 App ID 和 App 证书，详见<a href="https://docs.agora.io/cn/Agora%20Platform/token?platform=All%20Platforms#app-id">校验用户权限</a>。<ul>
+<li>如果你使用 int 型 uid 加入频道，请注释掉以下代码段：<pre class="language-Java hljs"><div class="tools"><a class="btn theme-toggle-btn" data-clipboard-text="" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Toggle Theme"></a><a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="  String result = token.buildTokenWithUserAccount(appId, appCertificate,  
+           channelName, userAccount, Role.Role_Publisher, timestamp);
+  System.out.println(result);
+" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Copy Code"></a></div><code class="language-Java">  String result = token.buildTokenWithUserAccount(appId, appCertificate,  
+           channelName, userAccount, Role.Role_Publisher, timestamp);
+  System.out.println(result);</code></pre>
+</li>
+<li>如果你使用 string 型 userAccount 加入频道，请注释掉以下代码段：<pre class="language-Java hljs"><div class="tools"><a class="btn theme-toggle-btn" data-clipboard-text="" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Toggle Theme"></a><a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="  String result = token.buildTokenWithUid(appId, appCertificate,  
+          channelName, uid, Role.Role_Publisher, timestamp);
+  System.out.println(result);
+" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Copy Code"></a></div><code class="language-Java">  String result = token.buildTokenWithUid(appId, appCertificate,  
+          channelName, uid, Role.Role_Publisher, timestamp);
+  System.out.println(result);</code></pre>
+</li>
+</ul>
+</li>
+<li>　鼠标右击 <strong>/java/src/io/agora/sample/RtcTokenBuilderSample.java</strong> 并选择 <strong>Run as a Java application</strong>。新生成的 RTC Token 会在你的本地终端显示。</li>
+</ol>
+<h2 id="api-参考" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#api-参考">API 参考<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#api-参考" data-toggle="tooltip" data-placement="top" title="" data-original-title="Copy link"></a></h2>
+<p>你可以通过调用 <strong>RtcTokenBuilder.java</strong> 提供的公开方法创建自己的 Token 生成器。请注意，<strong>RtcTokenBuilder.java</strong> 既支持 int 型 uid 也支持 string 型 userAccount，请根据需要选择合适的生成方法。</p>
+<h3 id="buildtokenwithuid" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#buildtokenwithuid" class="">buildTokenWithUid<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#buildtokenwithuid" data-toggle="tooltip" data-placement="top" title="" data-original-title="Copy link"></a></h3>
+<pre class="language-Java hljs"><div class="tools"><a class="btn theme-toggle-btn" data-clipboard-text="" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Toggle Theme"></a><a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="   public String buildTokenWithUid(String appId, String appCertificate, 
+            String channelName, int uid, Role role, int privilegeTs)
+" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Copy Code"></a></div><code class="language-Java">   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">buildTokenWithUid</span><span class="hljs-params">(String appId, String appCertificate, 
+            String channelName, <span class="hljs-keyword">int</span> uid, Role role, <span class="hljs-keyword">int</span> privilegeTs)</span></span></code></pre>
+<p>该方法支持用 int 型 uid 生成 Token。</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>appId</code></td>
+<td>你的项目 ID。详见<a href="https://docs.agora.io/cn/Agora%20Platform/token/#app-id">获取 App ID</a>。</td>
+</tr>
+<tr>
+<td><code>appCertificate</code></td>
+<td>你的项目 App 证书。详见<a href="https://docs.agora.io/cn/Agora%20Platform/token?platform=All%20Platforms#app-certificate">开启 App 证书</a>。</td>
+</tr>
+<tr>
+<td><code>channelName</code></td>
+<td>标识通话的频道名称，长度在64字节以内的字符串。以下为支持的字符集范围（共89个字符）: <li>26 个小写英文字母 a-z</li><li>26 个大写英文字母 A-Z</li><li>10 个数字 0-9</li><li>空格</li><li>"!", "#", "$", "%", "&amp;", "(", ")", "+", "-", ":", ";", "&lt;", "=", ".", "&gt;", "?", "@", "[", "]", "^", "*_", " {", "}", "|", "~", ","</li></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td>用户 ID，32 位无符号整数。建议设置范围：1 到 (2<sup>32</sup>-1)，并保证唯一性。</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>用户角色。暂时只支持一种角色，请使用默认值 <code>Role_Publisher = 1</code>。</td>
+</tr>
+<tr>
+<td><code>privilegeTs</code></td>
+<td>Token 有效时间戳，格式为自 1970 年 1 月 1 日零时起经过的秒数。比如，如果你将 <code>privilegeExpiredTs</code> 设为当前时间戳再加 600 秒，那么 Token 会在生成 10 分钟后过期。Token 的最大有效期为 24 小时。如果你设为 0，或超过 24 小时，则 Token 有效期依然是 24 小时。</td>
+</tr>
+</tbody></table>
+<h3 id="buildtokenwithuseraccount" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#buildtokenwithuseraccount" class="active">buildTokenWithUserAccount<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#buildtokenwithuseraccount" data-toggle="tooltip" data-placement="top" title="" data-original-title="Copy link"></a></h3>
+<pre class="language-Java hljs"><div class="tools"><a class="btn theme-toggle-btn" data-clipboard-text="" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Toggle Theme"></a><a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="  public String buildTokenWithUserAccount(String appId, String appCertificate, 
+            String channelName, String account, Role role, int privilegeTs)
+" data-toggle="tooltip" data-container="body" data-placement="top" title="" data-original-title="Copy Code"></a></div><code class="language-Java">  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">buildTokenWithUserAccount</span><span class="hljs-params">(String appId, String appCertificate, 
+            String channelName, String account, Role role, <span class="hljs-keyword">int</span> privilegeTs)</span></span></code></pre>
+<p>该方法支持用 string 型 userAccount 生成 Token。</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>appId</code></td>
+<td>你的项目 ID。详见<a href="https://docs.agora.io/cn/Agora%20Platform/token/#app-id">获取 App ID</a>。</td>
+</tr>
+<tr>
+<td><code>appCertificate</code></td>
+<td>你的项目 App 证书。详见<a href="https://docs.agora.io/cn/Agora%20Platform/token?platform=All%20Platforms#app-certificate">开启 App 证书</a>。</td>
+</tr>
+<tr>
+<td><code>channelName</code></td>
+<td>标识通话的频道名称，长度在64字节以内的字符串。以下为支持的字符集范围（共89个字符）: <li>26 个小写英文字母 a-z</li><li>26 个大写英文字母 A-Z</li><li>10 个数字 0-9</li><li>空格</li><li>"!", "#", "$", "%", "&amp;", "(", ")", "+", "-", ":", ";", "&lt;", "=", ".", "&gt;", "?", "@", "[", "]", "^", "*_", " {", "}", "|", "~", ","</li></td>
+</tr>
+<tr>
+<td><code>userAccount</code></td>
+<td>用户 User Account。该参数为必需，最大不超过 255 字节，不可为 null。请确保加入频道的 User Account 的唯一性。 以下为支持的字符集范围（共 89 个字符）：<li>26 个小写英文字母 a-z</li><li>26 个大写英文字母 A-Z</li><li>10 个数字 0-9</li><li>空格</li><li>"!", "#", "$", "%", "&amp;", "(", ")", "+", "-", ":", ";", "&lt;", "=", ".", "&gt;", "?", "@", "[", "]", "^", "*_", " {", "}", "|", "~", ","</li></td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>用户角色。暂时只支持一种角色，请使用默认值 <code>Role_Publisher = 1</code>。</td>
+</tr>
+<tr>
+<td><code>privilegeTs</code></td>
+<td>Token 有效时间戳，格式为自 1970 年 1 月 1 日零时起经过的秒数。比如，如果你将 <code>privilegeExpiredTs</code> 设为当前时间戳再加 600 秒，那么 Token 会在生成 10 分钟后过期。Token 的最大有效期为 24 小时。如果你设为 0，或超过 24 小时，则 Token 有效期依然是 24 小时。</td>
+</tr>
+</tbody></table>
+<h2 id="相关链接" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#相关链接">相关链接<a href="javascript:;" type="button" class="btn copy-btn" data-clipboard-text="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#相关链接" data-toggle="tooltip" data-placement="top" title="" data-original-title="Copy link"></a></h2>
+<p>生成 Token 过程中，你也可以参考如下文档：</p>
+<ul>
+<li><a href="https://docs.agora.io/cn/faq/token_error">如何处理 RTC SDK 中 Token 相关错误码？</a></li>
+<li><a href="https://docs.agora.io/cn/faq/101_error">如何处理云端录制 101 错误码？</a></li>
+</ul>
+
+    </div>
+    <div class="article-nextprev clearfix">
+      
+      <a class="nextprev-btn prev" href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/start_live_android?platform=Android">
+        &lt;&nbsp;
+        上一篇：
+        快速开始
+      </a>
+      
+      
+      <a class="nextprev-btn next" href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/switch_channel_android?platform=Android">
+        下一篇：
+        快速切换直播频道
+        &nbsp;&gt;
+      </a>
+      
+    </div>
+  </div>
+</div>
+<div class="article-menu" style="max-height: 738px;">
+  <ul><li class="first-level"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#token-%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E8%AF%B4%E6%98%8E" title="Token 代码仓库说明">Token 代码仓库说明</a></li><li class="first-level"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90-rtc-token" title="快速生成 RTC Token">快速生成 RTC Token</a></li><li class="first-level"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#api-%E5%8F%82%E8%80%83" title="API 参考">API 参考</a></li><li class="second-level"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#buildtokenwithuid" title="buildTokenWithUid">buildTokenWithUid</a></li><li class="second-level active"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#buildtokenwithuseraccount" title="buildTokenWithUserAccount">buildTokenWithUserAccount</a></li><li class="first-level"><a href="https://docs-preview.agoralab.co/cn/Interactive%20Broadcast/token_server_java?platform=Java#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5" title="相关链接">相关链接</a></li></ul>
+</div>
+<div class="article-feedback-popup closed">
+  <span class="close">X</span>
+  <div class="thumbs">
+    <div class="question">
+      本篇文章对你是否有帮助？
+    </div>
+    <div class="thumb-icons">
+      <div class="thumb-icon thumbs-up"></div>
+      <div class="thumb-icon thumbs-down"></div>
+      <div class="thumbs-state hidden">打分成功！</div>
+    </div>
+  </div>
+  <div class="comments">
+    <div id="feedback-form">
+      <div class="feedback-option form-group hidden">
+        <label for="">这篇文档的问题可能包括：</label>
+        
+        <div>
+          <label>
+            <input type="checkbox" value="0"> 内容错误
+          </label>
+        </div>
+        
+        <div>
+          <label>
+            <input type="checkbox" value="1"> 更新不及时
+          </label>
+        </div>
+        
+        <div>
+          <label>
+            <input type="checkbox" value="2"> 链接错误
+          </label>
+        </div>
+        
+        <div>
+          <label>
+            <input type="checkbox" value="3"> 内容缺失（缺少代码或其他）
+          </label>
+        </div>
+        
+        <div>
+          <label>
+            <input type="checkbox" value="4"> 太简单/步骤待完善
+          </label>
+        </div>
+        
+        <div>
+          <label>
+            <input type="checkbox" value="5"> 看不懂
+          </label>
+        </div>
+        
+      </div>
+      <div class="form-group">
+        <label for="comment-input">更多建议:</label>
+        <textarea id="comment-input" rows="3" class="form-control" placeholder="请详细描述在文档使用中遇到的问题或改进建议..."></textarea>
+        <div class="has-error valid-comment-error hidden">请输入您的建议</div>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email-input" class="form-control" placeholder="留下您的email，接收后续反馈">
+        <div class="has-error valid-email-error hidden">邮箱格式不正确</div>
+      </div>
+      <div class="form-group feedback-success hidden">
+        <div>我们收到了您的反馈。感谢您的建议。</div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary submit">提交</button>
+        <button class="btn btn-default cancel">忽略</button>
+      </div>
+    </div>
+    <div class="comments-footer">
+      <h5 class="footer-title">你还可以:</h5>
+      <div>
+        <a href="https://agora-ticket.agora.io/" target="_blank">
+          <i class="icon icon-ticket"></i>
+          <span class="icon-text">支持</span>
+        </a>
+        <a class="right" href="https://docs.agora.io/cn/Agora%20Platform/community" target="_blank">
+          <i class="icon icon-forum"></i>
+          <span class="icon-text">访问论坛</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="float-menu">
+  <a class="menu-icon totop-icon" href="javascript:;">
+    <i class="icon totop"></i>
+  </a>
+  <a class="menu-icon feedback-icon" href="javascript:;">
+    <i class="icon feedback"></i>
+  </a>
+</div>
+<div id="reveal-modal">
+  <div class="reveal-modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+  </div>
+  <div class="reveal fade center ready" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.2);"></div>
+  <div class="backgrounds"></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" data-controls-layout="bottom-right" data-controls-back-arrows="faded" style="display: block;"><button class="navigate-left" aria-label="previous slide" disabled="disabled"><div class="controls-arrow"></div></button><button class="navigate-right" aria-label="next slide" disabled="disabled"><div class="controls-arrow"></div></button><button class="navigate-up" aria-label="above slide" disabled="disabled"><div class="controls-arrow"></div></button><button class="navigate-down" aria-label="below slide" disabled="disabled"><div class="controls-arrow"></div></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe="" tabindex="0"></div><div class="pause-overlay"><button class="resume-button">Resume presentation</button></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);"></div></div>
+</div>
+
+  </div>
+<script src="./在服务端生成 Token_files/0.658d3bfc535e0b13800c.js.下载"></script><script src="./在服务端生成 Token_files/1.cdfce85e6d409b9b752b.js.下载"></script><script src="./在服务端生成 Token_files/docs.a2011adaf2c835ae734c.js.下载"></script></body></html>
