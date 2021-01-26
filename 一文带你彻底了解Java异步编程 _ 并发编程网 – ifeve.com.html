@@ -1,0 +1,1409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0130)http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/osd.js.下载"></script><script src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/cookie.js.下载"></script><script src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/show_ads_impl.js.下载" id="google_shimpl"></script><script async="" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/adsbygoogle.js.下载"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9394337417063147",
+          enable_page_level_ads: true
+     });
+</script>
+<!--<base target="_blank">--><base href="." target="_blank">
+<meta name="baidu_union_verify" content="d30f7acd6a9a378cc0aeb0bd0ddfe30d">
+
+<script async="" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/adsbygoogle.js.下载"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9394337417063147",
+    enable_page_level_ads: true
+  });
+</script>
+<title>一文带你彻底了解Java异步编程 | 并发编程网 – ifeve.com</title>
+<meta name="description" content="让天下没有难学的技术">
+
+<link rel="alternate" type="application/rss+xml" title="并发编程网 – ifeve.com RSS Feed" href="http://ifeve.com/feed/">
+<link rel="alternate" type="application/atom+xml" title="并发编程网 – ifeve.com Atom Feed" href="http://ifeve.com/feed/atom/"> 
+<link rel="pingback" href="http://ifeve.com/xmlrpc.php">
+
+<link rel="stylesheet" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/style.css" type="text/css">
+<link rel="stylesheet" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/comment-style.css" type="text/css">
+
+ 
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="并发编程网 - ifeve.com » 一文带你彻底了解Java异步编程评论Feed" href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ifeve.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/wp-emoji-release.min.js.下载" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wpfp-css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/wpfp.css" type="text/css">
+<link rel="stylesheet" id="yarppWidgetCss-css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/style.min.css" type="text/css" media="all">
+<style id="wp-block-library-inline-css" type="text/css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="wp-postratings-css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/postratings-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/jquery.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/jquery-migrate.min.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/wpfp.js.下载"></script>
+<link rel="https://api.w.org/" href="http://ifeve.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ifeve.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ifeve.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Java踩坑记系列之线程池" href="http://ifeve.com/java%e8%b8%a9%e5%9d%91%e8%ae%b0%e7%b3%bb%e5%88%97%e4%b9%8b%e7%ba%bf%e7%a8%8b%e6%b1%a0/">
+<meta name="generator" content="WordPress 5.4.4">
+<link rel="canonical" href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/">
+<link rel="shortlink" href="http://ifeve.com/?p=50450">
+<link rel="alternate" type="application/json+oembed" href="http://ifeve.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fifeve.com%2F%25e4%25b8%2580%25e6%2596%2587%25e5%25b8%25a6%25e4%25bd%25a0%25e5%25bd%25bb%25e5%25ba%2595%25e4%25ba%2586%25e8%25a7%25a3java%25e5%25bc%2582%25e6%25ad%25a5%25e7%25bc%2596%25e7%25a8%258b%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://ifeve.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fifeve.com%2F%25e4%25b8%2580%25e6%2596%2587%25e5%25b8%25a6%25e4%25bd%25a0%25e5%25bd%25bb%25e5%25ba%2595%25e4%25ba%2586%25e8%25a7%25a3java%25e5%25bc%2582%25e6%25ad%25a5%25e7%25bc%2596%25e7%25a8%258b%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://c0.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style><link rel="amphtml" href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/amp/">
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/jscript.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/comment.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/rollover.js.下载"></script>
+
+<!--[if IE 7]>
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/ie7.css" type="text/css" />
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/ie8.css" type="text/css" />
+<![endif]-->
+
+
+<style type="text/css">
+a, .post .title a:hover, .post_meta a:hover, #bread_crumb ul li a:hover, #previous_post a:hover, #next_post a:hover, .post a.more-link:hover, #right_col li a:hover, #copyright li a:hover, #archive_headline #keyword,
+   #comments_wrapper a:hover, #comment_header_right .comment_switch_active a, #comment_header_right .comment_switch_active a:hover, #comment_pager .current
+   { color:#00A19E; }
+
+#no_post a.back:hover, #wp-calendar td a:hover, #wp-calendar #prev a:hover, #wp-calendar #next a:hover, .page_navi a:hover, #submit_comment:hover
+ { background-color:#00A19E; }
+
+#guest_info input:focus, #comment_textarea textarea:focus
+ { border:1px solid #00A19E; }
+
+a:hover
+ { color:#BDC900; }
+
+body { font-size:14px; }
+
+#header { background:url(http://ifeve.com/wp-content/uploads/flat/bg.png) left top; }
+.logo_text a { color:#F5F5F5; }
+#site_description {  border-top:1px solid #BBBBBB; color:#D2D9CC; }
+
+
+</style>
+
+<link rel="preload" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/integrator.js.下载" as="script"><script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/integrator.js.下载"></script><link rel="stylesheet" type="text/css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/shCore.css"><link rel="stylesheet" type="text/css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/shThemeEclipse.css"><style id="tsbrowser_video_independent_player_style" type="text/css">
+      [tsbrowser_force_max_size] {
+        width: 100% !important;
+        height: 100% !important;
+        left: 0px !important;
+        top: 0px !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        transform: none !important;
+      }
+      [tsbrowser_force_fixed] {
+        position: fixed !important;
+        z-index: 9999 !important;
+        background: black !important;
+      }
+      [tsbrowser_force_hidden] {
+        opacity: 0 !important;
+        z-index: 0 !important;
+      }
+      [tsbrowser_hide_scrollbar] {
+        overflow: hidden !important;
+      }
+      [tsbrowser_display_none] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+      [tsbrowser_force_show] {
+        display: black !important;
+        visibility: visible !important;
+        opacity: 0;
+      }</style></head>
+
+<body>
+
+ <div id="header">
+  <div class="header_menu">
+    <ul id="menu-%e4%b8%bb%e8%8f%9c%e5%8d%95" class="menu"><li id="menu-item-16594" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-16594"><a href="http://ifeve.com/">首页</a></li>
+<li id="menu-item-3432" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3432"><a href="http://ifeve.com/wp-login.php">登录</a></li>
+<li id="menu-item-9219" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-9219 parent_menu"><a href="http://ifeve.com/category/java/">JAVA</a>
+<ul class="sub-menu">
+	<li id="menu-item-16108" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16108"><a href="http://ifeve.com/java-io/">Java IO 教程</a></li>
+	<li id="menu-item-5283" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5283"><a href="http://ifeve.com/java-nio-all/">Java NIO 教程</a></li>
+	<li id="menu-item-17514" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17514"><a href="http://ifeve.com/java-reflection/">JAVA Reflection教程</a></li>
+	<li id="menu-item-16239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16239"><a href="http://ifeve.com/java-network">Java 网络教程</a></li>
+	<li id="menu-item-4416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4416"><a href="http://ifeve.com/java-concurrency-thread-directory/">Java并发和多线程</a></li>
+	<li id="menu-item-2767" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2767"><a href="http://ifeve.com/jmm-cookbook/">Java内存模型指南</a></li>
+	<li id="menu-item-2747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2747"><a href="http://ifeve.com/jmm-faq/">Java内存模型FAQ</a></li>
+	<li id="menu-item-2765" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2765"><a href="http://ifeve.com/syn-jmm/">同步与Java内存模型</a></li>
+	<li id="menu-item-5789" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5789"><a href="http://ifeve.com/oracle-java-concurrency-tutorial/">Oracle官方并发教程</a></li>
+	<li id="menu-item-15316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15316"><a href="http://ifeve.com/jvm-optimize/">JVM性能优化系列</a></li>
+	<li id="menu-item-15313" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15313"><a href="http://ifeve.com/useful-jvm-flags/">JVM实用参数系列</a></li>
+</ul>
+</li>
+<li id="menu-item-7938" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7938"><a href="http://ifeve.com/category/c/">C++</a></li>
+<li id="menu-item-9220" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-9220 parent_menu"><a href="http://ifeve.com/category/framework/">Framework</a>
+<ul class="sub-menu">
+	<li id="menu-item-12798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12798"><a href="http://ifeve.com/disruptor/">Disruptor 框架指南</a></li>
+	<li id="menu-item-12783" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12783"><a title="Netty" href="http://ifeve.com/category/netty/">Netty</a></li>
+	<li id="menu-item-12791" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12791"><a href="http://ifeve.com/category/scala/">Scala</a></li>
+	<li id="menu-item-12312" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12312"><a href="http://ifeve.com/getting-started-with-stom-index/">Storm 入门</a></li>
+	<li id="menu-item-9218" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9218"><a href="http://ifeve.com/google-guava/">Guava 官方指南</a></li>
+	<li id="menu-item-20471" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20471"><a href="http://ifeve.com/velocity-guide/">Apache Velocity 官方指南</a></li>
+	<li id="menu-item-21439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21439"><a href="http://ifeve.com/storm-translation/">Apache Storm 官方文档</a></li>
+</ul>
+</li>
+<li id="menu-item-555" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-555 parent_menu"><a href="http://ifeve.com/category/concurrency-translation/">其他译文</a>
+<ul class="sub-menu">
+	<li id="menu-item-2777" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2777"><a href="http://ifeve.com/java-concurrent/">并发基础</a></li>
+	<li id="menu-item-3340" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3340"><a href="http://ifeve.com/aqs/">j.u.c同步框架</a></li>
+	<li id="menu-item-2769" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2769"><a href="http://ifeve.com/fj/">Fork Join框架</a></li>
+	<li id="menu-item-9221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9221"><a href="http://ifeve.com/doug-lea/">Doug Lea 论文</a></li>
+	<li id="menu-item-4643" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4643"><a href="http://ifeve.com/mechanical-sympathy/">Mechanical Sympathy</a></li>
+	<li id="menu-item-6397" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6397"><a href="http://ifeve.com/stm/">软件事务内存导论</a></li>
+	<li id="menu-item-10845" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10845"><a href="http://ifeve.com/jsr133-cn/">JSR133中文版</a></li>
+</ul>
+</li>
+<li id="menu-item-103" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-103 parent_menu"><a href="http://ifeve.com/category/talk-concurrent/">本站原创</a>
+<ul class="sub-menu">
+	<li id="menu-item-2763" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2763"><a href="http://ifeve.com/talk-concurrency/">聊聊并发</a></li>
+	<li id="menu-item-2753" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2753"><a href="http://ifeve.com/java-memory-model-0/">深入理解Java内存模型</a></li>
+	<li id="menu-item-4862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4862"><a href="http://ifeve.com/from-javaeye-sys-struct/">从Java视角理解系统结构</a></li>
+	<li id="menu-item-4627" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4627"><a href="http://ifeve.com/ali-itu-agile/">阿里内贸团队敏捷实践</a></li>
+</ul>
+</li>
+<li id="menu-item-7119" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-7119 parent_menu"><a href="http://ifeve.com/category/%e5%b9%b6%e5%8f%91%e4%b9%a6%e7%b1%8d/">并发书籍</a>
+<ul class="sub-menu">
+	<li id="menu-item-10846" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10846"><a href="http://ifeve.com/art-of-java-concurrent-program/">《Java 并发编程的艺术》迷你书</a></li>
+	<li id="menu-item-6042" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6042"><a href="http://ifeve.com/perfbook/">《深入理解并行编程》</a></li>
+	<li id="menu-item-9172" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9172"><a href="http://ifeve.com/c-plus-plus-concurrency-in-action/">《C++ 并发编程》</a></li>
+	<li id="menu-item-7785" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7785"><a href="http://ifeve.com/java-7-concurrency-cookbook/">《Java 7 并发编程指南》</a></li>
+	<li id="menu-item-7120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7120"><a href="http://ifeve.com/jvm-concurrency">《Java 虚拟机并发编程》</a></li>
+	<li id="menu-item-12360" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12360"><a href="http://ifeve.com/getting-started-with-stom-index/">《Storm入门》中文版</a></li>
+</ul>
+</li>
+<li id="menu-item-17079" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17079"><a href="http://ifeve.com/questions/">面试题</a></li>
+<li id="menu-item-22180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22180"><a href="http://ifeve.com/my-favorite/">我的收藏</a></li>
+<li id="menu-item-9171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9171 parent_menu"><a href="http://ifeve.com/need-you/">加入我们</a>
+<ul class="sub-menu">
+	<li id="menu-item-3246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3246"><a href="http://ifeve.com/contribute/">我要投稿</a></li>
+	<li id="menu-item-6854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6854"><a href="http://ifeve.com/neitui/">内推阿里</a></li>
+</ul>
+</li>
+<li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-105 parent_menu"><a href="http://ifeve.com/about-site/">关于本站</a>
+<ul class="sub-menu">
+	<li id="menu-item-11306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11306"><a href="http://ifeve.com/category/%e6%b4%bb%e5%8a%a8/">活动</a></li>
+	<li id="menu-item-1487" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1487"><a href="http://ifeve.com/sitemap.html">文章归档</a></li>
+	<li id="menu-item-29361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29361"><a href="http://ifeve.com/author/">本站作者</a></li>
+	<li id="menu-item-131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131"><a href="http://ifeve.com/about-site/about-me/">关于清英</a></li>
+	<li id="menu-item-7600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7600"><a href="http://ifeve.com/ads/">广告合作</a></li>
+</ul>
+</li>
+</ul>    </div>
+  <!-- logo -->
+  <h1 class="logo_text"><a href="http://ifeve.com/">并发编程网 - ifeve.com</a></h1>
+<h2 id="site_description">让天下没有难学的技术</h2>
+ </div><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" frameborder="0" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!0" data-load-complete="true"></iframe></ins></ins></ins><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"></ins>
+
+ <div id="main_content" class="clearfix">
+
+  <div id="left_col">
+      <div id="bread_crumb">
+    <ul class="clearfix">
+     <li id="bc_home"><a href="http://ifeve.com/" title="首页">首页</a></li>
+     <li id="bc_cat"><a href="http://ifeve.com/category/java/">JAVA</a></li>     <li class="last">一文带你彻底了解Java异步编程</li>
+    </ul>
+   </div>
+   
+   
+   <div class="post_wrap clearfix" id="single">
+    <div class="post">
+     <h3 class="title"><span>一文带你彻底了解Java异步编程</span></h3>
+     <div class="post_content">
+      
+<p>随着<code>RxJava</code>、<code>Reactor</code>等异步框架的流行，异步编程受到了越来越多的关注，尤其是在IO密集型的业务场景中，相比传统的同步开发模式，异步编程的优势越来越明显。</p>
+
+
+
+<p>那到底什么是异步编程？异步化真正的好处又是什么？如何选择适合自己团队的异步技术？在实施异步框架落地的过程中有哪些需要注意的地方？</p>
+
+
+
+<span id="more-50450"></span>
+
+
+
+<p>本文从以下几个方面结合真实项目异步改造经验对异步编程进行分析，希望能给大家一些客观认识：</p>
+
+
+
+<ol><li>使用RxJava异步改造后的效果</li><li>什么是异步编程？异步实现原理</li><li>异步技术选型参考</li><li>异步化真正的好处是什么？</li><li>异步化落地的难点及解决方案</li><li>扩展:异步其他解决方案-协程</li></ol>
+
+
+
+<h2 id="item-1">使用RxJava异步改造后的效果</h2>
+
+
+
+<p>下图是我们后端java项目使用RxJava改造成异步前后的RT(响应时长)效果对比：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_16-40-25.png" alt=""></figure>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_16-40-40.png" alt=""></figure>
+
+
+
+<p>统计数据基于App端的gateway，以75线为准，还有80、85、90、99线，从图中可以看出改成异步后接口整体的平均响应时长降低了<strong>40%</strong>左右。</p>
+
+
+
+<p>(响应时间是以发送请求到收到后端接口响应数据的时长，上图改造的这个后端java接口内部流程比较复杂，因为公司都是微服务架构，该接口内部又调用了6个其他服务的接口，最后把这些接口的数据汇总在一起返回给前端)</p>
+
+
+
+<p>这张图是同步接口和改造成异步接口前后的CPU负载情况对比</p>
+
+
+
+<p>改造前cpu load : 35.46</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_16-50-03.png" alt=""></figure>
+
+
+
+<p>改造后cpu load : 14.25</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_16-50-02.png" alt=""></figure>
+
+
+
+<p>改成异步后CPU的负载情况也有明显下降，但CPU使用率并无影响(一般情况下异步化后cpu的利用率会有所提高，但要看具体的业务场景)</p>
+
+
+
+<p>CPU LoadAverage是指：一段时间内处于可运行状态和不可中断状态的进程平均数量。(可运行分为正在运行进程和正在等待CPU的进程；<strong>不可中断则是它正在做某些工作不能被中断比如等待磁盘IO、网络IO等</strong>)</p>
+
+
+
+<p>而我们的服务业务场景大部分都是IO密集型业务，功能实现很多需要依赖底层接口，会进行频繁的IO操作。</p>
+
+
+
+<p>下图是2019年在全球架构师峰会上<strong>阿里</strong>分享的异步化改造后的RT和QPS效果：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_17-00-52.png" alt=""></figure>
+
+
+
+<p><br>（图片来源：淘宝应用架构升级——反应式架构的探索与实践）</p>
+
+
+
+<h2 id="item-2">什么是异步编程？</h2>
+
+
+
+<h3 id="item-2-1">响应式编程 + NIO</h3>
+
+
+
+<h3 id="item-2-2">1. 异步和同步的区别：</h3>
+
+
+
+<p>我们先从<strong>I/O</strong>的角度看下同步模式下接口A调用接口B的交互流程:</p>
+
+
+
+<p>下图是传统的同步模式下io线程的交互流程，可以看出io是阻塞的，即bio的运行模式</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_17-13-09.png" alt=""></figure>
+
+
+
+<p>接口A发起调用接口B后，这段时间什么事情也不能做，主线程阻塞一直等到接口B数据返回，然后才能进行其他操作，可想而知如果接口A调用的接口不止B的话(A-&gt;B-&gt;C-&gt;D-&gt;E。。。)，那么等待的时间也是递增的，而且<strong>这期间CPU也要一直占用着</strong>，白白浪费资源，也就是上图看到的 cpu load 高的原因。</p>
+
+
+
+<p>而且还有一个隐患就是如果调用的其他服务中的接口比如C超时，或接口C挂掉了，那么对调用方服务A来说，剩余的接口比如D、E都会无限等待下去。。。</p>
+
+
+
+<p>其实大部分情况下我们收到数据后内部的处理逻辑耗时都很短，这个可以通过埋点执行时间统计，<strong>大部分时间都浪费在了IO等待上</strong>。</p>
+
+
+
+<p>下面这个视频演示了同步模式下我们线上环境真实的接口调用情况，即接口调用的线程执行和变化情况，(使用的工具是JDK自带的jvisual来监控线程变化情况)</p>
+
+
+
+<p>这里先交代下大致背景：服务端api接口A内部一共调用了6个其他服务的接口，大致交互是这样的：</p>
+
+
+
+<p>A接口（B -&gt; C -&gt; D -&gt; E -&gt; F -&gt; G）返回聚合数据</p>
+
+
+
+<p>背景：使用Jemter测试工具压测100个线程并发请求接口，以观察线程的运行情况（可以全屏观看）：</p>
+
+
+
+<p><a rel="noreferrer noopener" href="https://v.qq.com/x/page/v315879ickz.html" target="_blank">BIO模式下线程运行情况演示视频</a></p>
+
+
+
+<p><code>http-nio-8080-exec*</code>开头的是tomcat线程池中的线程，即前端请求我们后端接口时要通过tomcat服务器接收和转发的线程，因为我们后端api接口内部又调用了其他服务的6个接口（B、C、D、E、F、G），同步模式下需要等待上一个接口返回数据才能继续调用下一个接口，所以可以从视频中看出，大部分的http线程耗时都在8秒以上(绿色线条代表线程是”运行中”状态，8秒包括等待接口返回的时间和我们内部逻辑处理的总时间，因为是本地环境测试，受机器和网络影响较大)</p>
+
+
+
+<p>然后我们再看下异步模式的交互流程，即nio方式：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-08_18-22-57.png" alt=""></figure>
+
+
+
+<p>大致流程就是接口A发起调用接口B的请求后就立即返回，而不用阻塞等待接口B响应，这样的好处是<code>http-nio-8080-exec*</code>线程可以<strong>马上得到复用，接着处理下一个前端请求的任务</strong>，如果接口B处理完返回数据后，会有一个回调线程池处理真正的响应，即这种模式下我们的业务流程是<strong>http线程只处理请求，回调线程处理接口响应</strong>。</p>
+
+
+
+<p>这个视频演示了异步模式下接口A的线程执行情况，同样也是使用Jemter测试工具压测100个线程并发请求接口，以观察线程的运行情况（可以全屏观看）：</p>
+
+
+
+<p><a rel="noreferrer noopener" href="https://v.qq.com/x/page/f3158ebjre7.html" target="_blank">NIO模式下线程运行情况演示视频</a></p>
+
+
+
+<p>模拟的条件和同步模式一样，同样是100个线程并发请求接口，但这次<code>http-nio-8080-exec*</code>开头的线程只处理请求任务，而不再等待全部的接口返回，所以http的线程运行时间普遍都很短(大部分在1.8秒左右完成)，<code>AsfThread-executor-*</code>是我们系统封装的回调线程池，处理底层接口的真正响应数据。</p>
+
+
+
+<p>演示视频中的<code>AsfThread-executor-*</code>的回调线程只创建了30多个，而请求的http线程有100个，也就是说这30多个回调线程处理了接口B的100次响应(其实应该是600次，因为接口B内部又调用了6个其他接口，这6次也都是在异步线程里处理响应的)，因为每个接口返回的时间不一样，加上网络传输的时间，所以可以利用这个时间差充分复用线程即cpu资源，视频中回调线程<code>AsfThread-executor-*</code>的绿色运行状态是多段的，表示复用了多次，也就是少量回调线程处理了全部(600次)的响应，这正是<strong>IO多路复用</strong>的机制。</p>
+
+
+
+<p>nio模式下虽然<code>http-nio-8080-exec*</code>线程和回调线程<code>AsfThread-executor-*</code>的运行时间都很短，但是从http线程开始到asf回调处理完返回给前端结果的时间和bio即同步模式下的时间差异不大（在相同的逻辑流程下），并不是nio模式下服务响应的整体时间就会缩短，而是<strong>会提升</strong><strong>CPU的利用率</strong>，因为CPU不再会阻塞等待（不可中断状态减少），这样<strong>CPU就能有更多的资源来处理其他的请求任务</strong>，相同单位时间内能处理更多的任务，所以nio模式带来的好处是：</p>
+
+
+
+<ul><li><strong>提升QPS（用更少的线程资源实现更高的并发能力）</strong></li><li><strong>降低CPU负荷,提高利用率</strong></li></ul>
+
+
+
+<h3 id="item-2-3">2. Nio原理</h3>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_16-17-08.png" alt=""></figure>
+
+
+
+<p>结合上面的接口交互图可知，接口B通过网络返回数据给调用方(接口A)这一过程，对应底层实现就是网卡接收到返回数据后，通过自身的DMA（直接内存访问）将数据拷贝到内核缓冲区，这一步不需要CPU参与操作，也就是把原先CPU等待的事情交给了底层网卡去处理，这样<strong>CPU就可以专注于我们的应用程序即接口内部的逻辑运算</strong>。</p>
+
+
+
+<h3 id="item-2-4">3. Nio In Java</h3>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_21-21-41.png" alt=""></figure>
+
+
+
+<p>nio在java里的实现主要是上图中的几个核心组件：<code>channel</code>、<code>buffer</code>、<code>selector</code>，这些组件组合起来即实现了上面所讲的<strong>多路复用机制</strong>，如下图所示：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_21-27-33.png" alt=""></figure>
+
+
+
+<h2 id="item-3">响应式编程</h2>
+
+
+
+<h3 id="item-3-5">1. 什么是响应式编程？它和传统的编程方式有什么区别？</h3>
+
+
+
+<p>响应式可以简单的理解为收到某个事件或通知后采取的一系列动作，如上文中所说的响应操作系统的网络数据通知，然后以<strong>回调的方式</strong>处理数据。</p>
+
+
+
+<p>传统的命令式编程主要由：顺序、分支、循环 等控制流来完成不同的行为</p>
+
+
+
+<p>响应式编程的特点是：</p>
+
+
+
+<ul><li><strong>以逻辑为中心转换为以数据为中心</strong></li><li><strong>从命令式到声明式的转换</strong></li></ul>
+
+
+
+<h3 id="item-3-6">2. Java.Util.Concurrent.Future</h3>
+
+
+
+<p>在Java使用nio后无法立即拿到真实的数据，而且先得到一个”<code>future</code>“，可以理解为邮戳或快递单，为了获悉真正的数据我们需要不停的通过快递单号查询快递进度，所以&nbsp;<strong>J.U.C 中的 Future 是Java对异步编程的第一个解决方案</strong>，通常和线程池结合使用，伪代码形式如下：</p>
+
+
+<div id="highlighter_184480" class="syntaxhighlighter  "><div class="bar"><div class="toolbar"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_184480_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_184480" menu="false" src="http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">ExecutorService executor = Executors.newCachedThreadPool(); // 线程池</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="plain">Future&lt;String&gt; future = executor.submit(() -&gt;{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">Thread.sleep(200); // 模拟接口调用，耗时200ms</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">return "hello world";</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="plain">});</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="plain">// 在输出下面异步结果时主线程可以不阻塞的做其他事情</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="plain">// TODO 其他业务逻辑</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content"><code class="plain">System.out.println("异步结果:"+future.get()); //主线程获取异步结果</code></td></tr></tbody></table></div></div></div>
+
+
+<p><code>Future</code>的缺点很明显：</p>
+
+
+
+<ul><li>无法方便得知任务何时完成</li><li>无法方便获得任务结果</li><li>在主线程获得任务结果会导致主线程阻塞</li></ul>
+
+
+
+<h3 id="item-3-7">3. ListenableFuture</h3>
+
+
+
+<p>Google并发包下的<code>listenableFuture</code>对Java原生的future做了扩展，顾名思义就是使用监听器模式实现的<strong>回调机制</strong>，所以叫可监听的future。</p>
+
+
+<div id="highlighter_703732" class="syntaxhighlighter  "><div class="bar  "><div class="toolbar"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_703732_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_703732" menu="false" src="http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">Futures.addCallback(listenableFuture, new FutureCallback&lt;String&gt;() {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">@Override</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">public void onSuccess(String result) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">System.out.println("异步结果:" + result);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">@Override</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">public void onFailure(Throwable t) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">t.printStackTrace();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="plain">}, executor);</code></td></tr></tbody></table></div></div></div>
+
+
+<p>回调机制的最大问题是：<strong>Callback Hell（回调地狱）</strong></p>
+
+
+
+<p>试想如果调用的接口多了，而且接口之间有依赖的话，最终写出来的代码可能就是下面这个样子：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_22-27-47.png" alt=""></figure>
+
+
+
+<ul><li>代码的字面形式和其所表达的业务含义不匹配</li><li>业务的先后关系在代码层面变成了包含和被包含的关系</li><li>大量使用 Callback 机制，使应该是先后的业务逻辑在代码形式上表现为层层嵌套,这会导致代码难以理解和维护。</li></ul>
+
+
+
+<p>那么如何解决 Callback Hell 问题呢？</p>
+
+
+
+<p><strong>响应式编程</strong></p>
+
+
+
+<p>其实主要是以下两种解决方式：</p>
+
+
+
+<ul><li>事件驱动机制</li><li>链式调用(Lambda)</li></ul>
+
+
+
+<h3 id="item-3-8">4. CompletableFuture</h3>
+
+
+
+<p>Java8里的<code>CompletableFuture</code>和Java9的<code>Flow Api</code>勉强算是上面问题的解决方案：</p>
+
+
+<div id="highlighter_183551" class="syntaxhighlighter  "><div class="bar"><div class="toolbar"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_183551_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_183551" menu="false" src="http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">CompletableFuture&lt;String&gt; f1 = CompletableFuture.supplyAsync(() -&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">"hello"</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="plain">// f2依赖f1的结果做转换</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="plain">CompletableFuture&lt;String&gt; f2 = f1.thenApplyAsync(t -&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">t + " world"</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="plain">System.out.println("异步结果:" + f2.get());</code></td></tr></tbody></table></div></div></div>
+
+
+<p>但<code>CompletableFuture</code>处理简单的任务可以使用，但并不是一个完整的反应式编程解决方案，在服务调用复杂的情况下，存在服务编排、上下文传递、柔性限流(背压)方面的不足</p>
+
+
+
+<p>如果使用<code>CompletableFuture</code>面对这些问题可能需要自己额外造一些轮子，Java9的<code>Flow</code>虽然是基于&nbsp;<strong>Reactive Streams</strong>&nbsp;规范实现的，但没有RxJava、Project Reactor这些异步框架丰富和强大和完整的解决方案。</p>
+
+
+
+<p>当然如果接口逻辑比较简单，完全可以使用<code>listenableFuture</code>或<code>CompletableFuture</code>，关于他们的详细用法可参考之前的一篇文章：<a href="http://javakk.com/225.html" rel="noreferrer noopener" target="_blank">Java异步编程指南</a></p>
+
+
+
+<h3 id="item-3-9">5. Reactive Streams</h3>
+
+
+
+<p>在网飞推出RxJava1.0并在Android端普及流行开后，响应式编程的规范也呼之欲出：</p>
+
+
+
+<p><a rel="noreferrer noopener" href="http://javakk.com/redirect/aHR0cHM6Ly93d3cucmVhY3RpdmUtc3RyZWFtcy5vcmcv" target="_blank">www.reactive-streams.org/</a></p>
+
+
+
+<p>包括后来的RxJava2.0、Project Reactor都是基于Reactive Streams规范实现的。</p>
+
+
+
+<p>关于他们和<code>listenableFuture</code>、&nbsp;<code>CompletableFuture</code>的区别通过下面的例子大家应该就会清楚。</p>
+
+
+
+<p>比如下面的基于回调的代码示例：获取用户的5个收藏列表功能</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_22-52-36.png" alt=""></figure>
+
+
+
+<p>图中标注序号的步骤对应如下：</p>
+
+
+
+<ol><li>根据uid调用用户收藏列表接口<code>userService.getFavorites</code></li><li>成功的回调逻辑</li><li>如果用户收藏列表为空</li><li>调用推荐服务<code>suggestionService.getSuggestions</code></li><li>推荐服务成功后的回调逻辑</li><li>取前5条推荐并展示(<code>Java8 Stream api</code>)</li><li>推荐服务失败的回调,展示错误信息</li><li>如果用户收藏列表有数据返回</li><li>取前5条循环调用详情接口<code>favoriteService.getDetails</code>&nbsp;成功回调则展示详情,失败回调则展示错误信息</li></ol>
+
+
+
+<p>可以看出主要逻辑都是在回调函数（<code>onSuccess()</code>、<code>onError()</code>）中处理的，在可读性和后期维护成本上比较大。</p>
+
+
+
+<p>基于Reactive Streams规范实现的响应式编程解决方案如下：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_22-58-14.png" alt=""></figure>
+
+
+
+<ol><li>调用用户收藏列表接口</li><li>压平数据流调用详情接口</li><li>如果收藏列表为空调用推荐接口</li><li>取前5条</li><li>切换成异步线程处理上述声明接口返回结果)</li><li>成功则展示正常数据,错误展示错误信息</li></ol>
+
+
+
+<p>可以看出因为这些异步框架提供了丰富的api，所以我们可以把主要精力<strong>放在数据的流转上，而不是原来的逻辑控制上。这也是异步编程带来的思想上的转变。</strong></p>
+
+
+
+<p>下图是RxJava的<code>operator api</code>：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_23-06-05.png" alt=""></figure>
+
+
+
+<p>（如果这些操作符满足不了你的需求，你也可以自定义操作符）</p>
+
+
+
+<p>所以说<strong>异步最吸引人的地方在于资源的充分利用，不把资源浪费在等待的时间上(nio)，代价是增加了程序的复杂度，而Reactive Program封装了这些复杂性，使其变得简单。</strong></p>
+
+
+
+<p>所以我们无论使用哪种异步框架，尽量使用框架提供的api，而不是像上图那种基于回调业务的代码，把业务逻辑都写在onSuccess、onError等回调方法里，这样无法发挥异步框架的真正作用：</p>
+
+
+
+<blockquote class="wp-block-quote"><p>Codes Like Sync，Works Like Async</p></blockquote>
+
+
+
+<p>即以<strong>同步的方式编码，达到异步的效果与性能,兼顾可维护性与可伸缩性</strong>。</p>
+
+
+
+<h2 id="item-4">异步框架技术选型</h2>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-09_23-17-52.png" alt=""></figure>
+
+
+
+<p><br>（图片来源：淘宝应用架构升级——反应式架构的探索与实践）</p>
+
+
+
+<p>上面这张图也是阿里在2019年的深圳全球架构师峰会上分享的PPT截图（文章末尾有链接），供大家参考，选型标准主要是基于稳定性、普及性、成本这3点考虑</p>
+
+
+
+<p>如果是我个人更愿意选择Project Reactor作为首选异步框架，（具体差异网上很多分析，大家可以自行百度谷歌），还有一点是因为Netflix的尿性，推出的开源产品渐渐都不维护了，而且Project Reactor提供了<code>reactor-adapter</code>组件，可以方便的和RxJava的api转换。</p>
+
+
+
+<p>其实还有<strong>Vert.x</strong>也算异步框架 (底层使用netty实现nio, 最新版已支持reactive stream规范)</p>
+
+
+
+<h2 id="item-5">异步化真正的好处</h2>
+
+
+
+<h3 id="item-5-10">Scalability</h3>
+
+
+
+<p>伸缩性主要体现在以下两个方面：</p>
+
+
+
+<ul><li><strong>elastic&nbsp;弹性</strong></li><li><strong>resilient&nbsp;容错性</strong></li></ul>
+
+
+
+<p>（异步化在平时<strong>不会明显降低 RT、提高 QPS</strong>，文章开头的数据也是在大促这种流量高峰下的体现出的异步效果）</p>
+
+
+
+<p>从架构和应用等更高纬度看待异步带来的好处则会提升系统的两大能力：<strong>弹性</strong>&nbsp;和&nbsp;<strong>容错性</strong></p>
+
+
+
+<p>前者反映了系统应对压力的表现，后者反映了系统应对故障的表现</p>
+
+
+
+<h4>1. 容错性</h4>
+
+
+
+<p>像RxJava，Reactor这些异步框架处理回调数据时一般会切换线程上下文，其实就是使用不同的线程池来隔离不同的数据流处理逻辑，下图说明了这一特性的好处：<br></p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-12_22-59-22.png" alt=""></figure>
+
+
+
+<p>即利用异步框架支持线程池切换的特性实现<strong>服务/接口隔离</strong>，进而提高系统的<strong>高可用</strong>。</p>
+
+
+
+<h4>2. 弹性</h4>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-10_13-42-31.png" alt=""></figure>
+
+
+
+<p>back-pressure是一种重要的反馈机制，相比于传统的熔断限流等方式，是一种更加<strong>柔性的自适应限流</strong>。使得系统得以优雅地响应负载，而不是在负载下崩溃。</p>
+
+
+
+<h2 id="item-6">异步化落地的难点及解决方案</h2>
+
+
+
+<p>还是先看下淘宝总结的异步改造中难点问题：</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/javakk.com_2020-10-10_13-02-02.png" alt=""></figure>
+
+
+
+<p><br>（图片来源：淘宝应用架构升级——反应式架构的探索与实践）</p>
+
+
+
+<p>中间件全异步牵涉到到公司中台化战略或框架部门的支持，包括公司内部常用的中间件比如MQ、redis、dal等，超出了本文讨论的范围，感兴趣的可以看下文章末尾的参考资料。</p>
+
+
+
+<p>线程模型统一的背景在上一节异步化好处时有提到过，其实主要还是对线程池的管理，做好服务隔离，线程池设置和注意事项可以参考之前的两篇文章：<a href="http://javakk.com/188.html" rel="noreferrer noopener" target="_blank">Java踩坑记系列之线程池</a>&nbsp;、<a href="http://javakk.com/215.html" rel="noreferrer noopener" target="_blank">线程池ForkJoinPool简介</a></p>
+
+
+
+<p>这里主要说下上下文传递和阻塞检测的问题：</p>
+
+
+
+<h3 id="item-6-11">1. 上下文传递</h3>
+
+
+
+<p>改造成异步服务后，不能再使用<code>ThreadLocal</code>传递上下文context，因为异步框架比如RxJava一般在收到通知后会先调用<code>observeOn()</code>方法切换成另外一个线程处理回调，比如我们在请求接口时在<code>ThreadLocal</code>的context里设置了一个值，在回调线程里从context里取不到这个值的，因为此时已经不是同一个<code>ThreadLocal</code>了，所以需要我们手动在切换上下文的时候传递context从一个线程到另一个线程环境，伪代码如下：</p>
+
+
+<div id="highlighter_200222" class="syntaxhighlighter  "><div class="bar"><div class="toolbar"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_200222_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_200222" menu="false" src="http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">Context context = ThreadLocalUtils.get(); // 获取当前线程的上下文</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="plain">single.observeOn(scheduler).doOnEvent((data, error) -&gt; ThreadLocalUtils.set(context)); // 切换线程后在doOnEvent里重新给新的线程赋值context</code></td></tr></tbody></table></div></div></div>
+
+
+<p>在<code>observeOn()</code>方法切换成另外一个线程后调用<code>doOnEvent</code>方法将原来的context赋给新的线程<code>ThreadLocal</code></p>
+
+
+
+<p><strong>注意</strong>：这里的代码只是提供一种解决思路，实际在使用前和使用后还要考虑清空<code>ThreadLocal</code>，因为线程有可能会回收到线程池下次复用，而不是立即清理，<strong>这样就会污染上下文环境</strong>。</p>
+
+
+
+<p>可以将传递上下文的方法封装成公共方法，不需要每次都手动切换。</p>
+
+
+
+<h3 id="item-6-12">2. 阻塞检测</h3>
+
+
+
+<p>阻塞检测主要是要能及时发现我们某个异步任务长时间阻塞的发生，比如异步线程执行时间过长进而影响整个接口的响应，原来同步场景下我们的日志都是串行记录到ES或Cat上的，现在改成异步后，每次处理接口数据的逻辑可能在不同的线程中完成，这样记录的日志就需要我们主动去合并（依据具体的业务场景而定），如果日志无法关联起来，对我们排查问题会增加很多难度。所幸的是随着异步的流行，现在很多日志和监控系统都已支持异步了。</p>
+
+
+
+<p>Project Reactor 自己也有阻塞检测功能，可以参考这篇文章：<a href="http://javakk.com/redirect/aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0b3IvQmxvY2tIb3VuZA==" rel="noreferrer noopener" target="_blank">BlockHound</a></p>
+
+
+
+<h3 id="item-6-13">3. 其他问题</h3>
+
+
+
+<p>除了上面提到的两个问题外，还有一些比如RxJava2.0之后不支持返回null，如果我们原来的代码或编程习惯所致返回结果有null的情况，可以考虑使用java8的<code>Optional.ofNullable()</code>包装一下，然后返回的RxJava类型是这样的：<code>Single&lt;Optional&gt;</code>，其他异步框架如果有类似的问题同理。</p>
+
+
+
+<h2 id="item-7">异步其他解决方案：纤程/协程</h2>
+
+
+
+<ul><li>Quasar</li><li>Kilim</li><li>Kotlin</li><li>Open JDK Loom</li><li>AJDK wisp2</li></ul>
+
+
+
+<p>协程并不是什么新技术，它在很多语言中都有实现，比如&nbsp;<code>Python</code>、<code>Lua</code>、<code>Go</code>&nbsp;都支持协程。</p>
+
+
+
+<p>协程与线程不同之处在于，<strong>线程由内核调度，而协程的调度是进程自身完成的</strong>。这样就可以不受操作系统对线程数量的限制，一个线程内部可以创建成千上万个协程。因为上文讲到的异步技术都是基于线程的操作和封装，Java中的线程概念对应的就是操作系统的线程。</p>
+
+
+
+<h3 id="item-7-14">1. Quasar、Kilim</h3>
+
+
+
+<p>开源的Java轻量级线程（协程）框架，通过利用<code>Java instrument</code>技术对字节码进行修改，使方法挂起前后可以保存和恢复JVM栈帧，方法内部已执行到的字节码位置也通过增加状态机的方式记录，在下次恢复执行可直接跳转至最新位置。</p>
+
+
+
+<h3 id="item-7-15">2. Kotlin</h3>
+
+
+
+<p>Kotlin Coroutine 协程库，因为 Kotlin 的运行依赖于 JVM，不能对 JVM 进行修改，因此Kotlin不能在底层支持协程。同时Kotlin 是一门编程语言，需要在语言层面支持协程，所以Kotlin 对协程支持最核心的部分是在编译器中完成，这一点其实和Quasar、Kilim实现原理类似，都是在<strong>编译期通过修改字节码</strong>的方式实现协程</p>
+
+
+
+<h3 id="item-7-16">3. Project Loom</h3>
+
+
+
+<p>Project Loom 发起的原因是因为长期以来Java 的线程是与操作系统的线程一一对应的，这限制了 Java 平台并发能力提升，Project Loom 是<strong>从 JVM 层面对多线程技术进行彻底的改变</strong>。</p>
+
+
+
+<p>OpenJDK 在2018年创建了 Loom 项目，目标是在JVM上实现轻量级的线程，并解除JVM线程与内核线程的映射。其实 Loom 项目的核心开发人员正是从Quasar项目过来的，目的也很明确，就是要将这项技术集成到底层JVM里，所以Quasar项目目前已经不维护了。。。</p>
+
+
+
+<h3 id="item-7-17">4. AJDK Wisp2</h3>
+
+
+
+<p>Alibaba Dragonwell 是阿里巴巴的 Open JDK 发行版，提供长期支持。dragonwell8已开源协程功能（之前的版本是不支持的），开启jvm命令：<code>-XX:+UseWisp2</code>&nbsp;即支持协程。</p>
+
+
+
+<h2 id="item-8">总结</h2>
+
+
+
+<ul><li>Future 在异步方面支持有限</li><li>Callback 在编排能力方面有 Callback Hell 的短板</li><li>Project Loom 最新支持的Open JDK版本是16，目前还在测试中</li><li>AJDK wisp2 需要换掉整个JVM，需要考虑改动成本和收益比</li></ul>
+
+
+
+<p>所以目前实现异步化比较成熟的方案是&nbsp;<strong>Reactive Streams</strong></p>
+
+
+
+<p>以上是老K对异步编程的理解，如有问题欢迎指正。</p>
+
+
+
+<p>另外开发人员也不要将自己局限在某种特定技术上，对各种技术都保持开放的态度是开发人员技能不断提高的前提。只会简单说某某语言、某某技术比其它技术更好的人永远不会成为出色的产品[狗头]。</p>
+
+
+
+<blockquote class="wp-block-quote"><p>From Reactive, More Than Reactive</p></blockquote>
+
+
+
+<p>文章来源：<a href="http://javakk.com/563.html" rel="noreferrer noopener" target="_blank">http://javakk.com/563.html</a></p>
+
+
+
+<h3 id="item-8-18">参考资料</h3>
+
+
+
+<p>全球架构师峰会:（第二天-淘宝应用架构升级——反应式架构的探索与实践）<br><a href="http://javakk.com/redirect/aHR0cHM6Ly9hcmNoc3VtbWl0LmluZm9xLmNuLzIwMTkvc2hlbnpoZW4vc2NoZWR1bGU=" rel="noreferrer noopener" target="_blank">https://archsummit.infoq.cn/2019/shenzhen/schedule</a></p>
+
+
+
+<p>Project Reactor：<a href="http://javakk.com/redirect/aHR0cHM6Ly9wcm9qZWN0cmVhY3Rvci5pby8=" rel="noreferrer noopener" target="_blank">https://projectreactor.io/</a></p>
+
+
+
+<p>RxJava：<a href="http://javakk.com/redirect/aHR0cDovL3JlYWN0aXZleC5pby8=" rel="noreferrer noopener" target="_blank">http://reactivex.io/</a></p>
+
+
+
+<p>openjdk loom：<a href="http://javakk.com/redirect/aHR0cDovL2pkay5qYXZhLm5ldC9sb29tLw==" rel="noreferrer noopener" target="_blank">http://jdk.java.net/loom/</a></p>
+
+
+
+<p>wiki：<a href="http://javakk.com/redirect/aHR0cHM6Ly93aWtpLm9wZW5qZGsuamF2YS5uZXQvZGlzcGxheS9sb29tL01haW4=" rel="noreferrer noopener" target="_blank">https://wiki.openjdk.java.net/display/loom/Main</a></p>
+
+
+
+<p>github：<a href="http://javakk.com/redirect/aHR0cHM6Ly9naXRodWIuY29tL29wZW5qZGsvbG9vbQ==" rel="noreferrer noopener" target="_blank">https://github.com/openjdk/loom</a></p>
+
+
+
+<p>阿里 jdk：<a href="http://javakk.com/redirect/aHR0cHM6Ly9naXRodWIuY29tL2FsaWJhYmEvZHJhZ29ud2VsbDg=" rel="noreferrer noopener" target="_blank">https://github.com/alibaba/dragonwell8</a></p>
+<div style="margin-top: 15px; font-style: italic">
+<p><strong>原创文章，转载请注明：</strong> 转载自<a href="http://ifeve.com/">并发编程网 – ifeve.com</a><strong>本文链接地址:</strong> <a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/">一文带你彻底了解Java异步编程</a></p>
+</div><span class="wpfp-span"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/star.png" alt="Favorite" title="Favorite" class="wpfp-img"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/loading.gif" alt="Loading" title="Loading" class="wpfp-hide wpfp-img"><a class="wpfp-link" href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/?wpfpaction=add&amp;postid=50450" title="添加本文到我的收藏" rel="nofollow">添加本文到我的收藏</a></span><div class="yarpp-related">
+<h3>Related posts:</h3><ol>
+<li><a href="http://ifeve.com/java-jigsaw/" rel="bookmark" title="《JAVA模块化系统》翻译邀请">《JAVA模块化系统》翻译邀请 </a></li>
+<li><a href="http://ifeve.com/promise-future-callback/" rel="bookmark" title="并发编程 Promise, Future 和 Callback">并发编程 Promise, Future 和 Callback </a></li>
+<li><a href="http://ifeve.com/%e3%80%8ajdk10%e6%96%b0%e7%89%b9%e6%80%a7%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e3%80%8b-%e4%ba%94%e6%9c%88%e7%bf%bb%e8%af%91%e9%82%80%e8%af%b7/" rel="bookmark" title="《JDK10新特性官方文档》– 五月翻译邀请">《JDK10新特性官方文档》– 五月翻译邀请 </a></li>
+<li><a href="http://ifeve.com/java8-concurrency-tutorial-thread-executor-examples/" rel="bookmark" title="Java8并发教程：Threads和Executors">Java8并发教程：Threads和Executors </a></li>
+<li><a href="http://ifeve.com/jigsaw-jsr-376/" rel="bookmark" title="Java平台模块系统（JSR 376）">Java平台模块系统（JSR 376） </a></li>
+<li><a href="http://ifeve.com/jep-282-jlink/" rel="bookmark" title="JEP 282  jlink：Java链接器">JEP 282  jlink：Java链接器 </a></li>
+<li><a href="http://ifeve.com/spring%e6%a1%86%e6%9e%b6%e6%8f%90%e4%be%9b%e7%9a%84%e5%bc%82%e6%ad%a5%e6%89%a7%e8%a1%8c%e8%83%bd%e5%8a%9b/" rel="bookmark" title="Spring框架提供的异步执行能力">Spring框架提供的异步执行能力 </a></li>
+<li><a href="http://ifeve.com/m2-using-ant/" rel="bookmark" title="《Maven官方指南》Maven使用Ant指南">《Maven官方指南》Maven使用Ant指南 </a></li>
+<li><a href="http://ifeve.com/executorservice-10-tips-and-tricks/" rel="bookmark" title="ExecutorService-10个要诀和技巧">ExecutorService-10个要诀和技巧 </a></li>
+<li><a href="http://ifeve.com/linkerd-run-locally/" rel="bookmark" title="《Linkerd官方文档》在本地运行Linkerd">《Linkerd官方文档》在本地运行Linkerd </a></li>
+<li><a href="http://ifeve.com/spring-boot-2-%e5%bf%ab%e9%80%9f%e6%95%99%e7%a8%8b%ef%bc%9awebflux-%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%ef%bc%88%e4%ba%8c%ef%bc%89/" rel="bookmark" title="Spring Boot 2 快速教程：WebFlux 快速入门（二）">Spring Boot 2 快速教程：WebFlux 快速入门（二） </a></li>
+<li><a href="http://ifeve.com/java-nio-path/" rel="bookmark" title="《Java NIO教程》Java NIO Path">《Java NIO教程》Java NIO Path </a></li>
+<li><a href="http://ifeve.com/completablefutures-tasks-and-callbacks/" rel="bookmark" title="哪个线程执行 CompletableFuture’s tasks 和 callbacks?">哪个线程执行 CompletableFuture’s tasks 和 callbacks? </a></li>
+<li><a href="http://ifeve.com/%e4%bd%bf%e7%94%a8threadlocal%e4%b8%8d%e5%bd%93%e5%8f%af%e8%83%bd%e4%bc%9a%e5%af%bc%e8%87%b4%e5%86%85%e5%ad%98%e6%b3%84%e9%9c%b2/" rel="bookmark" title="使用ThreadLocal不当可能会导致内存泄露">使用ThreadLocal不当可能会导致内存泄露 </a></li>
+<li><a href="http://ifeve.com/small-scale-stream-processing-kata-part_13/" rel="bookmark" title="小规模的流处理框架.Part 2: RxJava 1.x/2.x">小规模的流处理框架.Part 2: RxJava 1.x/2.x </a></li>
+</ol>
+</div>
+           </div><!-- END .post_content -->
+    </div>
+    <div class="meta">
+          <ul>
+      <li class="post_date clearfix">
+       <span class="date">30</span>
+       <span class="month">Nov</span>
+       <span class="year">2020</span>
+      </li>
+      
+<li class="post_comment">
+669 人阅读</li>
+
+      <li class="post_author"><a href="http://ifeve.com/author/javakk/" title="由javakk发布" rel="author">javakk</a></li>      <li class="post_category"><a href="http://ifeve.com/category/java/" rel="category tag">JAVA</a></li>       <li class="post_category"><div id="post-ratings-50450" class="post-ratings" itemscope="" itemtype="http://schema.org/Article" data-nonce="8b914fc70e"><img id="rating_50450_1" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/rating_on.gif" alt="好烂啊" title="好烂啊" onmouseover="current_rating(50450, 1, &#39;好烂啊&#39;);" onmouseout="ratings_off(5, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;"><img id="rating_50450_2" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/rating_on.gif" alt="没价值" title="没价值" onmouseover="current_rating(50450, 2, &#39;没价值&#39;);" onmouseout="ratings_off(5, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;"><img id="rating_50450_3" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/rating_on.gif" alt="凑合看看" title="凑合看看" onmouseover="current_rating(50450, 3, &#39;凑合看看&#39;);" onmouseout="ratings_off(5, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;"><img id="rating_50450_4" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/rating_on.gif" alt="还不错" title="还不错" onmouseover="current_rating(50450, 4, &#39;还不错&#39;);" onmouseout="ratings_off(5, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;"><img id="rating_50450_5" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/rating_on.gif" alt="超赞" title="超赞" onmouseover="current_rating(50450, 5, &#39;超赞&#39;);" onmouseout="ratings_off(5, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;"> (<strong>1</strong> votes, average: <strong>5.00</strong> out of 5)<br><span class="post-ratings-text" id="ratings_50450_text"></span><meta itemprop="name" content="一文带你彻底了解Java异步编程"><meta itemprop="headline" content="一文带你彻底了解Java异步编程"><meta itemprop="description" content="
+随着RxJava、Reactor等异步框架的流行，异步编程受到了越来越多的关注，尤其是在IO密集型的业务场景中，相比传统的同步开发模式，异步编程的优势越来越明显。
+
+
+
+那到底什么是异步编程？异步化真正的好处又是什么？如何选择适合自己团队的异步技术？在实施异步框架落地的过程中有哪些需要注意的地方？
+
+
+
+
+
+
+
+本文从以下几个方面结合真实项目异步改造经验对异步编程进行分析，希望能给大家一些客观认..."><meta itemprop="datePublished" content="2020-11-30T09:37:08+08:00"><meta itemprop="dateModified" content="2020-11-30T09:37:11+08:00"><meta itemprop="url" content="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/"><meta itemprop="author" content="javakk"><meta itemprop="mainEntityOfPage" content="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/"><div style="display: none;" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><meta itemprop="name" content="并发编程网 - ifeve.com"><meta itemprop="url" content="http://ifeve.com"><div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content=""></div></div><div style="display: none;" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"><meta itemprop="bestRating" content="5"><meta itemprop="worstRating" content="1"><meta itemprop="ratingValue" content="5"><meta itemprop="ratingCount" content="1"></div></div><div id="post-ratings-50450-loading" class="post-ratings-loading"><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/loading(1).gif" width="16" height="16" class="post-ratings-image">Loading...</div></li>       <li class="post_comment"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#respond">发表评论</a></li>           </ul>
+         </div>
+   </div><!-- END .post_wrap -->
+
+   
+      <div id="comments_wrapper">
+    
+
+
+
+
+<div id="comment_header" class="clearfix">
+
+ <ul id="comment_header_left">
+  <li id="add_comment"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#respond">发表评论</a></li>
+  <li id="comment_feed"><a href="http://ifeve.com/comments/feed/" title="RSS订阅评论">RSS订阅评论</a></li>
+ </ul>
+
+ <ul id="comment_header_right">
+   <li id="trackback_closed">Trackback 关闭</li>
+   <li id="comment_closed">评论 (0)</li>
+ </ul>
+
+
+</div><!-- END #comment_header -->
+
+<div id="comments">
+
+ <div id="comment_area">
+  <!-- start commnet -->
+  <ol class="commentlist">
+	    <li class="comment even_comment">
+     <div class="comment-content"><p>暂无评论</p></div>
+    </li>
+	  </ol>
+  <!-- comments END -->
+
+  
+ </div><!-- #comment-list END -->
+
+
+ <div id="trackback_area">
+ <!-- start trackback -->
+  <!-- trackback end -->
+ </div><!-- #trackbacklist END -->
+
+ 
+
+
+ 
+ <div class="comment_form_wrapper" id="respond">
+    您必须 <a href="http://ifeve.com/wp-login.php">登陆</a> 后才能发表评论 </div>
+
+ </div><!-- #comment end -->   </div>
+   
+      <div id="previous_next_post_single">
+    <div class="clearfix">
+     <p id="previous_post"><a href="http://ifeve.com/java%e8%b8%a9%e5%9d%91%e8%ae%b0%e7%b3%bb%e5%88%97%e4%b9%8b%e7%ba%bf%e7%a8%8b%e6%b1%a0/" rel="prev">Java踩坑记系列之线程池</a></p>         </div>
+   </div>
+   
+
+  </div><!-- END #left_col -->
+
+  <div id="container"></div>
+
+    <div id="right_col">
+   
+
+<div class="side_box clearfix" id="side_meta_content">
+
+ 
+  <div id="search_area">
+    <form method="get" id="searchform" action="http://ifeve.com/">
+   <div><input id="search_button" class="rollover" type="image" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/search_button.gif" alt="搜索一下" title="搜索一下"></div>
+   <div><input id="search_input" type="text" value="搜索一下" name="s" onfocus="if (this.value == &#39;搜索一下&#39;) this.value = &#39;&#39;;" onblur="if (this.value == &#39;&#39;) this.value = &#39;搜索一下&#39;;"></div>
+  </form>
+   </div>
+ 
+</div>
+
+
+<div id="side_top">
+
+ <div class="widget_text side_box widget_custom_html" id="custom_html-3">
+<div class="textwidget custom-html-widget"><script async="" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/adsbygoogle.js.下载"></script>
+<!-- 首页－右上－2 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 320px; height: 280px;" data-ad-client="ca-pub-9394337417063147" data-ad-slot="8872369516" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:320px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:320px;background-color:transparent;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:320px;height:280px;" width="320" height="280" frameborder="0" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/ads(1).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-google-query-id="CPbn__-avO0CFRIllgodgMsK6w" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- <p><a target="_blank" href="http://threadlocal.cn/shell.html" rel="noopener noreferrer">
+	<img width="300" height="300" align="center" src="http://ifeve.com/wp-content/uploads/2020/08/WechatIMG6140.png"/>
+	</a>
+</p> --></div></div>
+<div class="side_box widget_views" id="views-4">
+<h3 class="side_title">热门文章</h3>
+<ul>
+<li><a href="http://ifeve.com/google-guava/" title="Google Guava官方教程（中文版）">Google Guava官方教程（中文版）</a> 841,453 人阅读 </li><li><a href="http://ifeve.com/overview/" title="Java NIO系列教程（一） Java NIO 概述">Java NIO系列教程（一） Java NIO 概述</a> 616,107 人阅读 </li><li><a href="http://ifeve.com/java-nio-all/" title="Java NIO 系列教程">Java NIO 系列教程</a> 416,777 人阅读 </li><li><a href="http://ifeve.com/java-concurrency-thread-directory/" title="Java并发性和多线程介绍目录">Java并发性和多线程介绍目录</a> 411,567 人阅读 </li><li><a href="http://ifeve.com/java-nio-vs-io/" title="Java NIO系列教程（十二） Java NIO与IO">Java NIO系列教程（十二） Java NIO与IO</a> 360,262 人阅读 </li><li><a href="http://ifeve.com/selectors/" title="Java NIO系列教程（六） Selector">Java NIO系列教程（六） Selector</a> 296,510 人阅读 </li><li><a href="http://ifeve.com/buffers/" title="Java NIO系列教程（三） Buffer">Java NIO系列教程（三） Buffer</a> 295,062 人阅读 </li><li><a href="http://ifeve.com/channels/" title="Java NIO系列教程（二） Channel">Java NIO系列教程（二） Channel</a> 290,539 人阅读 </li><li><a href="http://ifeve.com/stream/" title="Java8初体验（二）Stream语法详解">Java8初体验（二）Stream语法详解</a> 271,233 人阅读 </li><li><a href="http://ifeve.com/spring-interview-questions-and-answers/" title="69道Spring面试题和答案">69道Spring面试题和答案</a> 262,139 人阅读 </li><li><a href="http://ifeve.com/disruptor/" title="并发框架Disruptor译文">并发框架Disruptor译文</a> 237,733 人阅读 </li><li><a href="http://ifeve.com/netty5-user-guide/" title="Netty 5用户指南">Netty 5用户指南</a> 207,243 人阅读 </li><li><a href="http://ifeve.com/getting-started-with-stom-index/" title="《Storm入门》中文版">《Storm入门》中文版</a> 202,952 人阅读 </li><li><a href="http://ifeve.com/google-guava-collectionutilities/" title="[Google Guava] 2.3-强大的集合工具类：ja...">[Google Guava] 2.3-强大的集合工具类：ja...</a> 197,125 人阅读 </li><li><a href="http://ifeve.com/google-guava-cachesexplained/" title="[Google Guava] 3-缓存">[Google Guava] 3-缓存</a> 191,974 人阅读 </li><li><a href="http://ifeve.com/questions/" title="面试题">面试题</a> 190,789 人阅读 </li><li><a href="http://ifeve.com/socket-channel/" title="Java NIO系列教程（八） SocketChannel">Java NIO系列教程（八） SocketChannel</a> 181,298 人阅读 </li><li><a href="http://ifeve.com/creating-and-starting-java-threads/" title="如何创建并运行java线程">如何创建并运行java线程</a> 173,565 人阅读 </li><li><a href="http://ifeve.com/java-threadpool/" title="聊聊并发（三）Java线程池的分析和使用">聊聊并发（三）Java线程池的分析和使用</a> 170,758 人阅读 </li><li><a href="http://ifeve.com/google-guava-using-and-avoiding-null/" title="[Google Guava] 1.1-使用和避免null">[Google Guava] 1.1-使用和避免null</a> 166,129 人阅读 </li></ul>
+</div>
+<div class="widget_text side_box widget_custom_html" id="custom_html-6">
+<div class="textwidget custom-html-widget"><script async="" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/adsbygoogle.js(1).下载"></script>
+<!-- 首页－右上－3 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 320px; height: 0px;" data-ad-client="ca-pub-9394337417063147" data-ad-slot="4721371513" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display: inline-table; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 320px; background-color: transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_2_anchor" style="display: block; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 320px; background-color: transparent; overflow: hidden; opacity: 0;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:320px;height:280px;" width="320" height="280" frameborder="0" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/ads(2).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!2" data-load-complete="true" data-google-query-id="CKH7gYCbvO0CFc-ClgodcJwCdw"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+		<div class="side_box widget_recent_entries" id="recent-posts-2">
+		<h3 class="side_title">近期文章</h3>
+		<ul>
+											<li>
+					<a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/" aria-current="page">一文带你彻底了解Java异步编程</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/java%e8%b8%a9%e5%9d%91%e8%ae%b0%e7%b3%bb%e5%88%97%e4%b9%8b%e7%ba%bf%e7%a8%8b%e6%b1%a0/">Java踩坑记系列之线程池</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/spring%e6%a1%86%e6%9e%b6%e6%8f%90%e4%be%9b%e7%9a%84%e5%bc%82%e6%ad%a5%e6%89%a7%e8%a1%8c%e8%83%bd%e5%8a%9b/">Spring框架提供的异步执行能力</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e3%80%8a%e6%8a%80%e6%9c%af%e4%ba%ba%e6%b1%82%e8%81%8c%e6%8c%87%e5%8d%97%e3%80%8b%e4%b8%89-%e6%8e%8c%e6%8f%a1%e6%96%b9%e6%b3%95%e8%ae%ba/">《技术人求职指南》(三) 掌握方法论</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e3%80%8a%e6%8a%80%e6%9c%af%e4%ba%ba%e6%b1%82%e8%81%8c%e6%8c%87%e5%8d%97%e3%80%8b%e5%9b%9b-%e5%ae%9e%e6%88%98%e7%bb%83%e4%b9%a0/">《技术人求职指南》(四) 实战练习</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3java8/">深入理解Java8</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/spring-boot-%e5%a6%82%e4%bd%95%e5%bf%ab%e9%80%9f%e9%9b%86%e6%88%90-redis-%e5%93%a8%e5%85%b5%ef%bc%9f/">Spring Boot 如何快速集成 Redis 哨兵？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/jdk%e9%87%8c%e7%9a%84%e8%87%aa%e6%97%8b%e9%94%81/">JDK里的自旋锁</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e4%b8%ba%e4%bb%80%e4%b9%88%e8%af%b4java%e7%a8%8b%e5%ba%8f%e5%91%98%e5%88%b0%e4%ba%86%e5%bf%85%e9%a1%bb%e6%8e%8c%e6%8f%a1-spring-boot-%e7%9a%84%e6%97%b6%e5%80%99%ef%bc%9f/">为什么说Java程序员到了必须掌握 Spring Boot 的时候？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e4%b8%ba%e4%bb%80%e4%b9%88%e6%88%91%e4%bb%ac%e6%94%be%e5%bc%83%e4%ba%86vue%ef%bc%9fvue%e5%92%8creact%e6%b7%b1%e5%ba%a6%e6%af%94%e8%be%83/">为什么我们放弃了Vue？Vue和React深度比较</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e6%b7%b1%e5%ba%a6%e8%a7%a3%e6%9e%90springcloud%e5%88%86%e5%b8%83%e5%bc%8f%e5%be%ae%e6%9c%8d%e5%8a%a1%e7%9a%84%e5%ae%9e%e7%8e%b0/">深度解析springcloud分布式微服务的实现</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/mysql%e5%a4%a7%e8%a1%a8%e5%88%86%e9%a1%b5%e9%99%84%e7%8b%ac%e9%97%a8%e7%a7%98%e6%8a%80/">MySql大表分页(附独门秘技)</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/jackson/">如何基于jackson动态序列化指定字段</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e8%b0%88%e8%b0%88%e6%9e%b6%e6%9e%84%e5%92%8c%e5%be%ae%e6%9c%8d%e5%8a%a1/">谈谈架构和微服务</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/jdk8-stream-convert-reactor/">如何从JDK8 Stream转换为反应式框架流？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/affinityexecutor/">亲缘性线程池，这是什么鬼？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e9%80%9a%e8%bf%87%e5%b1%80%e5%9f%9f%e7%bd%91%e4%b8%ad%e9%97%b4%e4%ba%ba%e6%94%bb%e5%87%bb%e5%ad%a6%e7%bd%91%e7%bb%9c-%e7%ac%ac%e4%b8%89%e7%af%87-netfilter%e6%a1%86%e6%9e%b6%e4%b9%8b%e5%86%85%e6%a0%b8/">通过局域网中间人攻击学网络 第三篇 netfilter框架之内核篇</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e9%80%9a%e8%bf%87%e5%b1%80%e5%9f%9f%e7%bd%91%e4%b8%ad%e9%97%b4%e4%ba%ba%e6%94%bb%e5%87%bb%e5%ad%a6%e7%bd%91%e7%bb%9c-%e5%ba%8f%e8%a8%80/">通过局域网中间人攻击学网络 序言</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e9%80%9a%e8%bf%87%e5%b1%80%e5%9f%9f%e7%bd%91%e4%b8%ad%e9%97%b4%e4%ba%ba%e6%94%bb%e5%87%bb%e5%ad%a6%e7%bd%91%e7%bb%9c-%e7%ac%ac%e4%ba%8c%e7%af%87%ef%bc%9aarp%e6%ac%ba%e9%aa%97/">通过局域网中间人攻击学网络 第二篇：ARP欺骗</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/one-multi-thread-opt/">记一次多线程代码优化</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/math-abs/">Java中使用Math.abs你入坑了？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/jdk8-optinal/">基于JDK8中Optional写出可读性高的代码</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/http-connection-pool/">httpclient连接池管理，你用对了？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/httpclient-async-call/">HttpClient的异步调用，你造吗？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e4%b8%80%e6%96%87%e8%ae%a9%e4%bd%a0%e5%bf%ab%e9%80%9f%e4%b8%8a%e6%89%8b-mockito-%e5%8d%95%e5%85%83%e6%b5%8b%e8%af%95%e6%a1%86%e6%9e%b6/">一文让你快速上手 Mockito 单元测试框架</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/stream-and-forkjoinpool/">关于Java中流式编程与ForkJoinPool的一点事</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/hotspot%e8%99%9a%e6%8b%9f%e6%9c%ba%e5%9e%83%e5%9c%be%e6%94%b6%e9%9b%86%e4%bc%98%e5%8c%96%e6%95%99%e7%a8%8b-%e5%b9%b6%e8%a1%8c%e5%9e%83%e5%9c%be%e6%94%b6%e9%9b%86%e5%99%a8/">HotSpot虚拟机垃圾收集优化教程-并行垃圾收集器</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/hotspot%e8%99%9a%e6%8b%9f%e6%9c%ba%e5%9e%83%e5%9c%be%e6%94%b6%e9%9b%86%e4%bc%98%e5%8c%96%e6%95%99%e7%a8%8b-%e5%a4%a7%e5%a4%9a%e6%95%b0%e5%b9%b6%e5%8f%91%e5%9e%83%e5%9c%be%e6%94%b6%e9%9b%86%e5%99%a8/">HotSpot虚拟机垃圾收集优化教程-大多数并发垃圾收集器</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/hotspot%e8%99%9a%e6%8b%9f%e6%9c%ba%e5%9e%83%e5%9c%be%e6%94%b6%e9%9b%86%e4%bc%98%e5%8c%96%e6%95%99%e7%a8%8b-cms%e5%b9%b6%e5%8f%91%e6%a0%87%e8%ae%b0%e6%89%ab%e6%8f%8f-%e5%9e%83%e5%9c%be%e6%94%b6/">HotSpot虚拟机垃圾收集优化教程-CMS并发标记扫描 垃圾收集器</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e5%a6%82%e4%bd%95%e5%9c%a8%e4%ba%bf%e7%ba%a7%e6%95%b0%e6%8d%ae%e4%b8%ad%e5%88%a4%e6%96%ad%e4%b8%80%e4%b8%aa%e5%85%83%e7%b4%a0%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8%ef%bc%9f/">如何在亿级数据中判断一个元素是否存在？</a>
+									</li>
+					</ul>
+		</div>
+<div class="widget_text side_box widget_custom_html" id="custom_html-4">
+<div class="textwidget custom-html-widget"><script async="" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/adsbygoogle.js.下载"></script>
+<!-- 首页－右边－4 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 320px; height: 280px;" data-ad-client="ca-pub-9394337417063147" data-ad-slot="6198104715" data-adsbygoogle-status="done"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:320px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_3_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:320px;background-color:transparent;"><iframe id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0;width:320px;height:280px;" width="320" height="280" frameborder="0" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/ads(3).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!3" data-google-query-id="CLr8goCbvO0CFUJIlgodaC4KVA" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+</div>
+<div id="side_middle" class="clearfix">
+ <div id="side_left">
+  <div class="widget_text side_box_short widget_custom_html" id="custom_html-5">
+<div class="textwidget custom-html-widget"></div></div>
+<div class="side_box_short widget_categories" id="categories-2">
+<h3 class="side_title">分类目录</h3>
+		<ul>
+				<li class="cat-item cat-item-415"><a href="http://ifeve.com/category/android/">Android</a> (3)
+</li>
+	<li class="cat-item cat-item-1101"><a href="http://ifeve.com/category/architecture/">Architecture</a> (2)
+</li>
+	<li class="cat-item cat-item-289"><a href="http://ifeve.com/category/c/">C++</a> (13)
+</li>
+	<li class="cat-item cat-item-366"><a href="http://ifeve.com/category/cpu-2/">CPU</a> (2)
+</li>
+	<li class="cat-item cat-item-73"><a href="http://ifeve.com/category/framework/">Framework</a> (74)
+<ul class="children">
+	<li class="cat-item cat-item-387"><a href="http://ifeve.com/category/framework/akka/">akka</a> (20)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-458"><a href="http://ifeve.com/category/go/">GO</a> (6)
+</li>
+	<li class="cat-item cat-item-617"><a href="http://ifeve.com/category/groovy/">groovy</a> (6)
+</li>
+	<li class="cat-item cat-item-310"><a href="http://ifeve.com/category/guava-2/">guava</a> (24)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://ifeve.com/category/java/">JAVA</a> (1,029)
+</li>
+	<li class="cat-item cat-item-127"><a href="http://ifeve.com/category/jvm/">JVM</a> (50)
+</li>
+	<li class="cat-item cat-item-300"><a href="http://ifeve.com/category/linux/">linux</a> (10)
+</li>
+	<li class="cat-item cat-item-1061"><a href="http://ifeve.com/category/microservices/">microservices</a> (3)
+</li>
+	<li class="cat-item cat-item-280"><a href="http://ifeve.com/category/netty/">Netty</a> (32)
+</li>
+	<li class="cat-item cat-item-1107"><a href="http://ifeve.com/category/python/">Python</a> (2)
+</li>
+	<li class="cat-item cat-item-632"><a href="http://ifeve.com/category/react/">react</a> (6)
+</li>
+	<li class="cat-item cat-item-623"><a href="http://ifeve.com/category/redis/">redis</a> (26)
+</li>
+	<li class="cat-item cat-item-166"><a href="http://ifeve.com/category/scala/">Scala</a> (11)
+</li>
+	<li class="cat-item cat-item-672"><a href="http://ifeve.com/category/spark/">spark</a> (19)
+</li>
+	<li class="cat-item cat-item-1011"><a href="http://ifeve.com/category/spring/">Spring</a> (24)
+</li>
+	<li class="cat-item cat-item-388"><a href="http://ifeve.com/category/storm/">storm</a> (44)
+</li>
+	<li class="cat-item cat-item-620"><a href="http://ifeve.com/category/thinking/">thinking</a> (3)
+</li>
+	<li class="cat-item cat-item-485"><a href="http://ifeve.com/category/velocity/">Velocity</a> (10)
+</li>
+	<li class="cat-item cat-item-279"><a href="http://ifeve.com/category/web/">Web</a> (18)
+</li>
+	<li class="cat-item cat-item-980"><a href="http://ifeve.com/category/zookeeper/">zookeeper</a> (1)
+</li>
+	<li class="cat-item cat-item-148"><a href="http://ifeve.com/category/notice/">公告</a> (5)
+</li>
+	<li class="cat-item cat-item-1103"><a href="http://ifeve.com/category/%e5%8c%ba%e5%9d%97%e9%93%be/">区块链</a> (3)
+</li>
+	<li class="cat-item cat-item-378"><a href="http://ifeve.com/category/bigdata/">大数据</a> (35)
+</li>
+	<li class="cat-item cat-item-138"><a href="http://ifeve.com/category/%e5%a5%bd%e6%96%87%e6%8e%a8%e8%8d%90/">好文推荐</a> (36)
+</li>
+	<li class="cat-item cat-item-244"><a href="http://ifeve.com/category/%e5%b9%b6%e5%8f%91%e4%b9%a6%e7%b1%8d/">并发书籍</a> (97)
+</li>
+	<li class="cat-item cat-item-29"><a href="http://ifeve.com/category/concurrency-translation/" title="发布国外并发编程相关文献译文。">并发译文</a> (419)
+</li>
+	<li class="cat-item cat-item-979"><a href="http://ifeve.com/category/%e6%84%9f%e6%82%9f/">感悟</a> (6)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://ifeve.com/category/ask/" title="可以在这里发表并发编程的问题。如何发表？用QQ登陆，然后点击“新建文章”，管理员审核后就可以发表。">技术问答</a> (12)
+</li>
+	<li class="cat-item cat-item-147"><a href="http://ifeve.com/category/%e6%95%8f%e6%8d%b7%e7%ae%a1%e7%90%86/">敏捷管理</a> (6)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://ifeve.com/category/talk-concurrent/">本站原创</a> (91)
+</li>
+	<li class="cat-item cat-item-367"><a href="http://ifeve.com/category/%e6%9e%b6%e6%9e%84/">架构</a> (39)
+</li>
+	<li class="cat-item cat-item-305"><a href="http://ifeve.com/category/%e6%b4%bb%e5%8a%a8/">活动</a> (5)
+</li>
+	<li class="cat-item cat-item-414"><a href="http://ifeve.com/category/%e7%bd%91%e7%bb%9c/">网络</a> (7)
+</li>
+	<li class="cat-item cat-item-1100"><a href="http://ifeve.com/category/%e9%9d%a2%e8%af%95/">面试</a> (2)
+</li>
+		</ul>
+			</div>
+ </div>
+ <div id="side_right">
+  <div class="side_box_short widget_tag_cloud" id="tag_cloud-4">
+<h3 class="side_title">标签</h3>
+<div class="tagcloud"><a href="http://ifeve.com/tag/actor/" class="tag-cloud-link tag-link-226 tag-link-position-1" style="font-size: 11.773913043478pt;" aria-label="actor (17个项目)">actor</a>
+<a href="http://ifeve.com/tag/basic/" class="tag-cloud-link tag-link-213 tag-link-position-2" style="font-size: 10.8pt;" aria-label="Basic (14个项目)">Basic</a>
+<a href="http://ifeve.com/tag/classes/" class="tag-cloud-link tag-link-251 tag-link-position-3" style="font-size: 8pt;" aria-label="classes (8个项目)">classes</a>
+<a href="http://ifeve.com/tag/collections/" class="tag-cloud-link tag-link-260 tag-link-position-4" style="font-size: 9.5826086956522pt;" aria-label="collections (11个项目)">collections</a>
+<a href="http://ifeve.com/tag/concurrency/" class="tag-cloud-link tag-link-111 tag-link-position-5" style="font-size: 19.44347826087pt;" aria-label="concurrency (77个项目)">concurrency</a>
+<a href="http://ifeve.com/tag/concurrent/" class="tag-cloud-link tag-link-214 tag-link-position-6" style="font-size: 10.434782608696pt;" aria-label="Concurrent (13个项目)">Concurrent</a>
+<a href="http://ifeve.com/tag/concurrent-data-structure/" class="tag-cloud-link tag-link-322 tag-link-position-7" style="font-size: 10.434782608696pt;" aria-label="concurrent data structure (13个项目)">concurrent data structure</a>
+<a href="http://ifeve.com/tag/concurrenthashmap/" class="tag-cloud-link tag-link-61 tag-link-position-8" style="font-size: 8pt;" aria-label="ConcurrentHashMap (8个项目)">ConcurrentHashMap</a>
+<a href="http://ifeve.com/tag/customizing/" class="tag-cloud-link tag-link-250 tag-link-position-9" style="font-size: 8pt;" aria-label="Customizing (8个项目)">Customizing</a>
+<a href="http://ifeve.com/tag/executor/" class="tag-cloud-link tag-link-177 tag-link-position-10" style="font-size: 12.504347826087pt;" aria-label="Executor (20个项目)">Executor</a>
+<a href="http://ifeve.com/tag/executor-framework/" class="tag-cloud-link tag-link-231 tag-link-position-11" style="font-size: 12.017391304348pt;" aria-label="Executor framework (18个项目)">Executor framework</a>
+<a href="http://ifeve.com/tag/faq/" class="tag-cloud-link tag-link-39 tag-link-position-12" style="font-size: 10.434782608696pt;" aria-label="faq (13个项目)">faq</a>
+<a href="http://ifeve.com/tag/fork/" class="tag-cloud-link tag-link-232 tag-link-position-13" style="font-size: 9.9478260869565pt;" aria-label="fork (12个项目)">fork</a>
+<a href="http://ifeve.com/tag/forkjoin/" class="tag-cloud-link tag-link-224 tag-link-position-14" style="font-size: 8.6086956521739pt;" aria-label="Fork/Join (9个项目)">Fork/Join</a>
+<a href="http://ifeve.com/tag/fork-join/" class="tag-cloud-link tag-link-53 tag-link-position-15" style="font-size: 8pt;" aria-label="fork join (8个项目)">fork join</a>
+<a href="http://ifeve.com/tag/framework/" class="tag-cloud-link tag-link-1018 tag-link-position-16" style="font-size: 13.6pt;" aria-label="Framework (25个项目)">Framework</a>
+<a href="http://ifeve.com/tag/functional-programming/" class="tag-cloud-link tag-link-460 tag-link-position-17" style="font-size: 9.095652173913pt;" aria-label="Functional Programming (10个项目)">Functional Programming</a>
+<a href="http://ifeve.com/tag/guava/" class="tag-cloud-link tag-link-309 tag-link-position-18" style="font-size: 11.773913043478pt;" aria-label="Guava (17个项目)">Guava</a>
+<a href="http://ifeve.com/tag/io/" class="tag-cloud-link tag-link-129 tag-link-position-19" style="font-size: 13.84347826087pt;" aria-label="IO (26个项目)">IO</a>
+<a href="http://ifeve.com/tag/java/" class="tag-cloud-link tag-link-1016 tag-link-position-20" style="font-size: 22pt;" aria-label="JAVA (124个项目)">JAVA</a>
+<a href="http://ifeve.com/tag/java8/" class="tag-cloud-link tag-link-342 tag-link-position-21" style="font-size: 10.434782608696pt;" aria-label="java8 (13个项目)">java8</a>
+<a href="http://ifeve.com/tag/jmm/" class="tag-cloud-link tag-link-31 tag-link-position-22" style="font-size: 14.939130434783pt;" aria-label="jmm (32个项目)">jmm</a>
+<a href="http://ifeve.com/tag/join/" class="tag-cloud-link tag-link-233 tag-link-position-23" style="font-size: 9.9478260869565pt;" aria-label="join (12个项目)">join</a>
+<a href="http://ifeve.com/tag/jvm/" class="tag-cloud-link tag-link-1019 tag-link-position-24" style="font-size: 12.991304347826pt;" aria-label="JVM (22个项目)">JVM</a>
+<a href="http://ifeve.com/tag/lock/" class="tag-cloud-link tag-link-17 tag-link-position-25" style="font-size: 13.84347826087pt;" aria-label="lock (26个项目)">lock</a>
+<a href="http://ifeve.com/tag/memory-barriers/" class="tag-cloud-link tag-link-75 tag-link-position-26" style="font-size: 9.095652173913pt;" aria-label="Memory Barriers (10个项目)">Memory Barriers</a>
+<a href="http://ifeve.com/tag/netty/" class="tag-cloud-link tag-link-1027 tag-link-position-27" style="font-size: 12.991304347826pt;" aria-label="Netty (22个项目)">Netty</a>
+<a href="http://ifeve.com/tag/nio/" class="tag-cloud-link tag-link-1021 tag-link-position-28" style="font-size: 12.017391304348pt;" aria-label="NIO (18个项目)">NIO</a>
+<a href="http://ifeve.com/tag/oauth-2-0/" class="tag-cloud-link tag-link-380 tag-link-position-29" style="font-size: 8pt;" aria-label="OAuth 2.0 (8个项目)">OAuth 2.0</a>
+<a href="http://ifeve.com/tag/pattern-matching/" class="tag-cloud-link tag-link-167 tag-link-position-30" style="font-size: 8pt;" aria-label="pattern-matching (8个项目)">pattern-matching</a>
+<a href="http://ifeve.com/tag/redis/" class="tag-cloud-link tag-link-624 tag-link-position-31" style="font-size: 8.6086956521739pt;" aria-label="redis (9个项目)">redis</a>
+<a href="http://ifeve.com/tag/scala/" class="tag-cloud-link tag-link-1023 tag-link-position-32" style="font-size: 12.991304347826pt;" aria-label="Scala (22个项目)">Scala</a>
+<a href="http://ifeve.com/tag/slf4j/" class="tag-cloud-link tag-link-813 tag-link-position-33" style="font-size: 8pt;" aria-label="slf4j (8个项目)">slf4j</a>
+<a href="http://ifeve.com/tag/spark/" class="tag-cloud-link tag-link-634 tag-link-position-34" style="font-size: 11.773913043478pt;" aria-label="spark (17个项目)">spark</a>
+<a href="http://ifeve.com/tag/spark%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3/" class="tag-cloud-link tag-link-635 tag-link-position-35" style="font-size: 11.773913043478pt;" aria-label="spark官方文档 (17个项目)">spark官方文档</a>
+<a href="http://ifeve.com/tag/spring/" class="tag-cloud-link tag-link-603 tag-link-position-36" style="font-size: 8pt;" aria-label="Spring (8个项目)">Spring</a>
+<a href="http://ifeve.com/tag/stm/" class="tag-cloud-link tag-link-199 tag-link-position-37" style="font-size: 9.9478260869565pt;" aria-label="stm (12个项目)">stm</a>
+<a href="http://ifeve.com/tag/storm/" class="tag-cloud-link tag-link-351 tag-link-position-38" style="font-size: 15.913043478261pt;" aria-label="Storm (39个项目)">Storm</a>
+<a href="http://ifeve.com/tag/synchronization/" class="tag-cloud-link tag-link-216 tag-link-position-39" style="font-size: 11.04347826087pt;" aria-label="synchronization (15个项目)">synchronization</a>
+<a href="http://ifeve.com/tag/synchronized/" class="tag-cloud-link tag-link-15 tag-link-position-40" style="font-size: 9.095652173913pt;" aria-label="Synchronized (10个项目)">Synchronized</a>
+<a href="http://ifeve.com/tag/thread/" class="tag-cloud-link tag-link-11 tag-link-position-41" style="font-size: 16.521739130435pt;" aria-label="thread (44个项目)">thread</a>
+<a href="http://ifeve.com/tag/tomcat/" class="tag-cloud-link tag-link-347 tag-link-position-42" style="font-size: 8.6086956521739pt;" aria-label="tomcat (9个项目)">tomcat</a>
+<a href="http://ifeve.com/tag/volatile/" class="tag-cloud-link tag-link-25 tag-link-position-43" style="font-size: 11.04347826087pt;" aria-label="volatile (15个项目)">volatile</a>
+<a href="http://ifeve.com/tag/%e5%a4%9a%e7%ba%bf%e7%a8%8b/" class="tag-cloud-link tag-link-197 tag-link-position-44" style="font-size: 9.9478260869565pt;" aria-label="多线程 (12个项目)">多线程</a>
+<a href="http://ifeve.com/tag/%e5%b9%b6%e5%8f%91%e8%af%91%e6%96%87%ef%bc%8cjava-%ef%bc%8cmaven/" class="tag-cloud-link tag-link-1034 tag-link-position-45" style="font-size: 15.547826086957pt;" aria-label="并发译文，Java ，Maven (36个项目)">并发译文，Java ，Maven</a></div>
+</div>
+ </div>
+</div>
+<div id="side_bottom">
+ <div class="widget_text side_box widget_custom_html" id="custom_html-2">
+<div class="textwidget custom-html-widget"><a href="http://vip.mybatis.cn/" target="_blank" rel="noopener noreferrer"><img align="center" src="http://vip.mybatis.cn/image/ad.jpg"></a>
+
+<!-- CNZZ -->
+<script src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/stat.php" language="JavaScript"></script><script src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/core.php" charset="utf-8" type="text/javascript"></script><a href="https://www.cnzz.com/stat/website.php?web_id=5003572" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/pic.gif"></a></div></div>
+</div>
+
+  </div>
+  
+  <div id="footer">
+
+<ul id="copyright">
+    <li>版权所有 ©&nbsp; <a href="http://ifeve.com/">并发编程网 – ifeve.com</a></li>
+    <li>ICP号: <a href="http://www.miibeian.gov.cn/" target="_blank">浙ICP备12046809号</a></li>
+ <li>	
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602005873" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/" style="float:left;">浙公网安备 33010602005873号</a></li>
+   </ul>
+		 
+		 
+
+ </div>
+
+	
+ </div><iframe id="google_osd_static_frame_6839578150005" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/saved_resource.html"></iframe><!-- END #main_content -->
+
+  <p id="return_top" style="display: block;"><a href="http://ifeve.com/%e4%b8%80%e6%96%87%e5%b8%a6%e4%bd%a0%e5%bd%bb%e5%ba%95%e4%ba%86%e8%a7%a3java%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b/#header">return top</a></p>
+ 
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/shCore.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/shBrushPlain.js.下载"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shCore.css?ver=2.1.364";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shThemeEclipse.css?ver=2.1.364";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.clipboardSwf = 'http://ifeve.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings.expandSource = 'show source';
+	SyntaxHighlighter.config.strings.viewSource = 'view source';
+	SyntaxHighlighter.config.strings.copyToClipboard = 'copy to clipboard';
+	SyntaxHighlighter.config.strings.copyToClipboardConfirmation = 'The code is in your clipboard now';
+	SyntaxHighlighter.config.strings.print = 'print';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<link rel="stylesheet" id="yarppRelatedCss-css" href="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/related.css" type="text/css" media="all">
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/comment-reply.min.js.下载"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var ratingsL10n = {"plugin_url":"http:\/\/ifeve.com\/wp-content\/plugins\/wp-postratings","ajax_url":"http:\/\/ifeve.com\/wp-admin\/admin-ajax.php","text_wait":"Please rate only 1 item at a time.","image":"stars_crystal","image_ext":"gif","max":"5","show_loading":"1","show_fading":"1","custom":"0"};
+var ratings_mouseover_image=new Image();ratings_mouseover_image.src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_over.gif";;
+/* ]]> */
+</script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/postratings-js.js.下载"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"http:\/\/ifeve.com\/wp-admin\/admin-ajax.php","post_id":"50450"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/postviews-cache.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/wp-embed.min.js.下载"></script>
+<script type="text/javascript" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/e-202050.js.下载" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.6.1',blog:'129860238',post:'50450',tz:'8',srv:'ifeve.com'} ]);
+	_stq.push([ 'clickTrackerInit', '129860238', '50450' ]);
+</script>
+
+
+<!-- 
+<script src="http://ajax.useso.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+
+<!-- <script src="http://coolshell.cn//wp-content/themes/inove/js/jquery.bpopup-0.8.0.min.js"></script>
+ --><img src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/g.gif" alt=":)" width="6" height="5" id="wpstats"></body><iframe id="google_esf" name="google_esf" src="./一文带你彻底了解Java异步编程 _ 并发编程网 – ifeve.com_files/zrt_lookup.html" data-ad-client="ca-pub-9394337417063147" style="display: none;"></iframe></html>
